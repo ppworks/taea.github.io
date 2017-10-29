@@ -14,7 +14,7 @@ timezone: Asia/Tokyo
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://ppworks.github.io
 root: /
-permalink: :year/:month/:day/:title
+permalink: :title
 permalink_defaults:
 
 # Directory
@@ -42,7 +42,7 @@ highlight:
   line_number: true
   auto_detect: false
   tab_replace:
-  
+
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
