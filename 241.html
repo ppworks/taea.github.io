@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>雑なアウトプット</title>
+  <title>Hexo | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="雑なアウトプット">
-<meta property="og:url" content="https://ppworks.github.io/index.html">
+  <meta name="description" content="Copied from: blog/勉強/2017/10/29/Hexo 何も考えずに他人の.travis.ymlを適当に使ってたので、ちょっと調整したりした。本当はpublicをcacheしたいんだけど、どうしてもうまく行かずに一旦ほぼ元のと同じ感じになった。この時間、なんだったんだ。 1234567891011121314151617181920212223242526272829303132">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="https://ppworks.github.io/241.html">
 <meta property="og:site_name" content="雑なアウトプット">
+<meta property="og:description" content="Copied from: blog/勉強/2017/10/29/Hexo 何も考えずに他人の.travis.ymlを適当に使ってたので、ちょっと調整したりした。本当はpublicをcacheしたいんだけど、どうしてもうまく行かずに一旦ほぼ元のと同じ感じになった。この時間、なんだったんだ。 1234567891011121314151617181920212223242526272829303132">
 <meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2017-10-29T21:19:20.702Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="雑なアウトプット">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Copied from: blog/勉強/2017/10/29/Hexo 何も考えずに他人の.travis.ymlを適当に使ってたので、ちょっと調整したりした。本当はpublicをcacheしたいんだけど、どうしてもうまく行かずに一旦ほぼ元のと同じ感じになった。この時間、なんだったんだ。 1234567891011121314151617181920212223242526272829303132">
   
     <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
   
@@ -60,9 +64,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-241.html" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-241.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/241.html" class="article-date">
   <time datetime="2017-10-30T06:18:28.000Z" itemprop="datePublished">2017-10-30 15:18:28</time>
@@ -76,8 +78,8 @@
         
 
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/241.html">勉強/2017/10/30/Hexo</a>
+    <h1 class="article-title" itemprop="name">
+      勉強/2017/10/30/Hexo
     </h1>
   
 
@@ -112,220 +114,23 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-240.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/240.html" class="article-date">
-  <time datetime="2017-10-30T02:51:36.000Z" itemprop="datePublished">2017-10-30 11:51:36</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+    <a href="/240.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
         
-
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/240.html">勉強/2017/10/29/Hexo</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>個人esaの特定のカテゴリ配下を <a href="https://ppworks.github.io">https://ppworks.github.io</a> としてブログにしてみることにした。</p>
-<ol>
-<li><a href="https://github.com/taea/taea.github.io" target="_blank" rel="external">https://github.com/taea/taea.github.io</a> を雑にfork</li>
-<li><a href="https://github.com/ppworks/ppworks.github.io/commit/9f2511addb3eeed0c023912c3078270c1124030b" target="_blank" rel="external">taeaをppworks</a>に変える</li>
-<li>esaのGitHub連携をする(personal access tokenは<code>public_repo</code>だけチェックが入っていればよい</li>
-<li>travis-ci.orgのsettingで<code>Build only if .travis.yml is present</code>をチェックする（しないとmasterブランチがコケ続ける）</li>
-<li>travis-ci.orgのsettingで<code>GH_TOKEN</code>をセットする</li>
-<li>masterをまっさらにする(<code>git rm -r archives categories css fancybox js tags index.html</code>)</li>
-<li><a href="https://github.com/ppworks/ppworks.github.io/compare/4b1722c953715da4a07c3c865d728a4cbf96124c...c5fae67e654f335fd5af91c1aef11d3ffd0a8a21" target="_blank" rel="external">なんか色々調整する</a><ul>
-<li>とくにpost.dateがmetaデータにないせいで起きる問題へのワークアラウンドがポイントではあるがesa側で柔軟に指定できるようにしたいなという気持ちがある。</li>
-</ul>
-</li>
-</ol>
-<p>とりあえず、それっぽくなった。（テーマは宇宙のままだけど）</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/240.html" data-id="cj9d9e1ug0004wi2mj0542sgc" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-239.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/239.html" class="article-date">
-  <time datetime="2017-10-29T21:37:26.000Z" itemprop="datePublished">2017-10-30 06:37:26</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          Hexo
         
-
+      </div>
+    </a>
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/239.html">てすと</a>
-    </h1>
   
+</nav>
 
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>てすてす。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/239.html" data-id="cj9d9e1ud0003wi2mx47w84hn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
-    <article id="post-237.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/237.html" class="article-date">
-  <time datetime="2017-10-29T14:32:44.000Z" itemprop="datePublished">2017-10-29 23:32:44</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/237.html">勉強/2017/10/28/Docker</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Copied from: <a href="/posts/233">勉強/2017/10/26/Docker</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker pull httpd</div><div class="line">docker image list</div><div class="line">docker container list</div><div class="line">docker run -d -p 8080:80 httpd:latest</div><div class="line">docker ps</div><div class="line">docker container stop</div><div class="line">docker container rm</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker volume ls</div><div class="line">docker volume create myvolume</div></pre></td></tr></table></figure>
-<blockquote>
-<p><a href="https://qiita.com/noralife/items/18301143c20cc5172c56" target="_blank" rel="external">よく使うDockerコマンド - Qiita</a><br>コンテナをつくってログインする: <code>docker run -it</code><br>コンテナをバックグランドで動作させる: <code>docker run -d</code><br>コンテナを環境変数で設定する: <code>docker run -e</code></p>
-</blockquote>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/237.html" data-id="cj9d9e1u10001wi2mi6vu5t7b" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-233.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/233.html" class="article-date">
-  <time datetime="2017-10-29T14:31:40.000Z" itemprop="datePublished">2017-10-29 23:31:40</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/233.html">勉強/2017/10/26/Docker</a>
-    </h1>
-  
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="external">https://docs.docker.com/docker-for-mac/install/</a><br>からMac版をダウンロード</p>
-<p><img src="https://img.esa.io/uploads/production/attachments/4729/2017/10/26/11/1360462d-7ab6-4836-acf6-90fa998f8d79.png" alt="image.png (405.5 kB)"></p>
-<p>おーわかりやすい。</p>
-<p>よーし。</p>
-<hr>
-<script async class="speakerdeck-embed" data-id="ceaac0f6da814d88b619648d200bc1db" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-<hr>
-<p>WEB+DB PRESS Vol.98</p>
-<table>
-<thead>
-<tr>
-<th>分野</th>
-<th>代表的なツール</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>仮想マシンのOS環境を整える</td>
-<td>Vagrant, kickstart</td>
-</tr>
-<tr>
-<td>ライブラリやミドルウェアを整える</td>
-<td>Chef, Puppet, Ansible</td>
-</tr>
-<tr>
-<td>アプリケーションをデプロイする</td>
-<td>Capistrano</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/233.html" data-id="cj9d9e1ts0000wi2ms56u73b5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
 
 
 </section>
