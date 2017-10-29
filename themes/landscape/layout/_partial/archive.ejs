@@ -5,6 +5,7 @@
 <% } else { %>
   <% var last; %>
   <% page.posts.each(function(post, i){ %>
+    <% post.date = moment(post.updated_at) %>
     <% var year = post.date.year(); %>
     <% if (last != year){ %>
       <% if (last != null){ %>
