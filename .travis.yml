@@ -9,28 +9,25 @@ node_js:
 branches:
   only:
   - esa
-before_install:
-- npm install -g hexo
-- npm install
-before_script:
-- git config --global user.name 'ppworks'
-- git config --global user.email 'koshikawa@ppworks.jp'
-- rm -rf public
-- git clone --depth=1 --branch=master https://github.com/ppworks/ppworks.github.io.git public
-- pushd public
-- git ls-files | xargs -I {} rm -rf {}
-- popd
-script:
-- hexo generate
-- cd public
-- git add -A
-- git commit -m 'Update'
-- '[ "$TRAVIS_BRANCH" == "esa" ]'
-- '[ $GH_TOKEN ]'
-- 'git push --force https://$GH_TOKEN@github.com/ppworks/ppworks.github.io.git HEAD:master'
 env:
   global:
   - GIT_COMMITTER_NAME=ppworks
   - GIT_COMMITTER_EMAIL=koshikawa@ppworks.jp
   - GIT_AUTHOR_NAME=ppworks
   - GIT_AUTHOR_EMAIL=koshikawa@ppworks.jp
+before_install:
+- npm install
+before_script:
+- git config --global user.name 'ppworks'
+- git config --global user.email 'koshikawa@ppworks.jp'
+- rm -fr public
+- git clone --depth=1 --branch=master https://github.com/ppworks/ppworks.github.io.git public
+- cd public
+- git ls-files | xargs -I {} rm -rf {}
+- cd -
+script:
+- $(npm bin)/hexo generate
+- cd public
+- git add -A
+- git commit -m 'Update'
+- git push https://$GH_TOKEN@github.com/ppworks/ppworks.github.io.git master
