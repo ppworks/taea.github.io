@@ -13,10 +13,10 @@ before_install:
 - npm install -g hexo
 - npm install
 before_script:
-- git config --global user.name 'taea'
-- git config --global user.email 'igiari@gmail.com'
+- git config --global user.name 'ppworks'
+- git config --global user.email 'koshikawa@ppworks.jp'
 - rm -rf public
-- git clone --depth=1 --branch=master https://github.com/taea/taea.github.io.git public
+- git clone --depth=1 --branch=master https://github.com/ppworks/ppworks.github.io.git public
 - pushd public
 - git ls-files | xargs -I {} rm -rf {}
 - popd
@@ -27,11 +27,10 @@ script:
 - git commit -m 'Update'
 - '[ "$TRAVIS_BRANCH" == "esa" ]'
 - '[ $GH_TOKEN ]'
-- 'git push --force https://$GH_TOKEN@github.com/taea/taea.github.io.git HEAD:master'
+- 'git push --force https://$GH_TOKEN@github.com/ppworks/ppworks.github.io.git HEAD:master'
 env:
   global:
-  - GIT_COMMITTER_NAME=taea
-  - GIT_COMMITTER_EMAIL=igiari@gmail.com
-  - GIT_AUTHOR_NAME=taea
-  - GIT_AUTHOR_EMAIL=igiari@gmail.com
-  - secure: FZCELrDoZQ6ujufIknO3/9jFIymuCGCJB6rRAE5AS/5Y2vSE9AKLo/pFzEag4jHLdGGs31HVE7xsUFtJgk6PawhCq2qrCGMayZs44NmO8cL7aUEilCGRXfU+EAWSJIzD5nmuBY7TE560g+8Nua5AAUcbrq6UMiV4ne2E8m+eI2WivRpzDJRosaU3EVnO1FS1IJ8pW3HBIN6LBUs6dWtgV6cKsusi2EJPL90ZKjb3qmggsNxwCnjcwkQZRN3hu8CWkDVWXKvhAlqcStpbfWD3W5XYwdx+pg6r3pJMl/Qh+Ip05FrGLJhu/+KTwxP5jEm3HNuvAH42utTMpmOrxGs+ORtFOgawGCVJee6n4nVjSfBtfZ700XSCE2Wp0Z6KPv70B3VIH7Np2nwqsG+8rjUvXImYIaS+w7BZjJDY4UhuvLIG8t5qbDuusP+iS4D0vXcIj+UOVb9WenZsKvjlR9iEaRWDiLC5U9fW3/ogKAZSzip3ZCOYxNOGDjeKtJ7s6WJUn9McHguijFuk5NUGrUs57DXfOL6epltJe2jAuLdWWGcbzsVLLPNGccydMDZNcFtc6IdJS2Bs0imTzWRQGGcMdBrfrvIQ4qMB58eDk4ahHfTBhpjeweNT/OKVJdxefuyrvw/leFmkC95FvvzrhNaiR7YTL8Fhb03XqDRPYYlUbrM=
+  - GIT_COMMITTER_NAME=ppworks
+  - GIT_COMMITTER_EMAIL=koshikawa@ppworks.jp
+  - GIT_AUTHOR_NAME=ppworks
+  - GIT_AUTHOR_EMAIL=koshikawa@ppworks.jp
