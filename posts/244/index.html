@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Seed FuをPostgreSQL 10 対応する | 雑なアウトプット</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
+<meta name="keywords" content="Rails">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Seed FuをPostgreSQL 10 対応する">
+<meta property="og:url" content="https://ppworks.github.io/posts/244/index.html">
+<meta property="og:site_name" content="雑なアウトプット">
+<meta property="og:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2017-10-30T19:35:25.441Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Seed FuをPostgreSQL 10 対応する">
+<meta name="twitter:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
+  
+    <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-52654728-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">雑なアウトプット</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/posts">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-244.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/244/" class="article-date">
+  <time datetime="2017-10-31T04:23:53.000Z" itemprop="datePublished">2017-10-31 13:23:53</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  
+    <h1 class="article-title" itemprop="name">
+      Seed FuをPostgreSQL 10 対応する
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当面は、<a href="https://github.com/ppworks/seed-fu/tree/support-postgresql10" target="_blank" rel="external">https://github.com/ppworks/seed-fu/tree/support-postgresql10</a> を使う。</p>
+<blockquote>
+<p><a href="https://www.postgresql.org/docs/10/static/release-10.html" target="_blank" rel="external">https://www.postgresql.org/docs/10/static/release-10.html</a><br>Move sequences’ metadata fields into a new pg_sequence system catalog (Peter Eisentraut)</p>
+<p>A sequence relation now stores only the fields that can be modified by nextval(), that is last_value, log_cnt, and is_called. Other sequence properties, such as the starting value and increment, are kept in a corresponding row of the <strong>pg_sequence</strong> catalog. ALTER SEQUENCE updates are now fully transactional, implying that the sequence is locked until commit. The nextval() and setval() functions remain nontransactional.</p>
+<p>The main incompatibility introduced by this change is that selecting from a sequence relation now returns only the three fields named above. To obtain the sequence’s other properties, applications must look into <strong>pg_sequence</strong>. The new system view pg_sequences can also be used for this purpose; it provides column names that are more compatible with existing code.</p>
+<p>The output of psql’s \d command for a sequence has been redesigned, too.</p>
+</blockquote>
+<p>とのことで、いままで <code>PostgreSQL</code> の <code>ID Sequence</code>を設定していた、こういうコードが落ちるようになった。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT increment_by FROM #&#123;sequence&#125;), (SELECT min_value FROM #&#123;sequence&#125;)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;), false)</span></div></pre></td></tr></table></figure>
+<p>エラーはこんな感じ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failure/Error: SeedFu.seed</div><div class="line"></div><div class="line">ActiveRecord::StatementInvalid:</div><div class="line">  PG::UndefinedColumn: ERROR:  column &quot;increment_by&quot; does not exist</div></pre></td></tr></table></figure>
+<p>以下のように、新たに導入された<code>pg_sequence</code>カタログを参照するように変更した。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT seqincrement FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass), (SELECT seqmin FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;),</span></div></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9el4hvn000bwr28ay0ajeu3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/243/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hexo と esa 連携するときの travis の設定
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/239/">てすと</a>
+          </li>
+        
+          <li>
+            <a href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
+          </li>
+        
+          <li>
+            <a href="/posts/243/">勉強/2017/10/30/Hexo と esa 連携するときの travis の設定</a>
+          </li>
+        
+          <li>
+            <a href="/posts/242/">勉強/2017/10/30/Hexo を esa ぽい URL にする</a>
+          </li>
+        
+          <li>
+            <a href="/posts/241/">勉強/2017/10/30/Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Rails/" style="font-size: 10px;">Rails</a>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <div class="widget">
+    <ul>
+      <li><a href="https://taea.github.io">taea.github.io</a></li>
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ppworks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/posts" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
