@@ -80,7 +80,7 @@ ga('send', 'pageview');
     <article id="post-244.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/244/" class="article-date">
-  <time datetime="2017-10-31T04:23:53.000Z" itemprop="datePublished">2017-10-31 13:23:53</time>
+  <time datetime="2017-10-31T06:01:19.000Z" itemprop="datePublished">2017-10-31 15:01:19</time>
 </a>
 
   </div>
@@ -114,11 +114,15 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failure/Error: SeedFu.seed</div><div class="line"></div><div class="line">ActiveRecord::StatementInvalid:</div><div class="line">  PG::UndefinedColumn: ERROR:  column &quot;increment_by&quot; does not exist</div></pre></td></tr></table></figure>
 <p>以下のように、新たに導入された<code>pg_sequence</code>カタログを参照するように変更した。</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT seqincrement FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass), (SELECT seqmin FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;),</span></div></pre></td></tr></table></figure>
+<p>ちなみにRailsの類似処理は既にマージされていた。</p>
+<blockquote>
+<p><a href="https://github.com/rails/rails/pull/28864" target="_blank" rel="external">https://github.com/rails/rails/pull/28864</a></p>
+</blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9entjon000bwq2sih0kfb8x" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9eo9pw6000bws2sd85yatpc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -162,7 +166,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9entjoe0008wq2s6veazgc1" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9eo9pw00008ws2suh13q7fn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -206,7 +210,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9entjo90007wq2sansn6ofd" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9eo9pvx0007ws2sq944ah0e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -261,7 +265,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9entjo40005wq2s5ggm8hkk" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9eo9pvu0005ws2suz54rs7v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -314,7 +318,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9entjny0004wq2sy5cynugu" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9eo9pvq0004ws2s3lllqxma" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +358,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9entjnv0003wq2s3zw1k4z7" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9eo9pvo0003ws2st06vw911" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +403,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9entjni0001wq2s6px0lpw5" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9eo9pvf0001ws2sucfrxad6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +474,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9entjn60000wq2s5zg7i6nb" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9eo9pv70000ws2sgt8fjc1i" class="article-share-link">Share</a>
       
       
     </footer>
