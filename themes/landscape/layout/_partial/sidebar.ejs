@@ -1,12 +1,5 @@
 <aside id="sidebar"<% if (theme.sidebar === 'bottom'){ %> class="outer"<% } %>>
-  <%- partial('_widget/recent_posts') %>
-  <%- partial('_widget/archive') %>
-  <div class="widget-wrap">
-    <h3 class="widget-title">Links</h3>
-    <div class="widget">
-      <ul>
-        <li><a href="https://taea.github.io">taea.github.io</a></li>
-      </ul>
-    </div>
-  </div>
+  <% theme.widgets.forEach(function(widget){ %>
+    <%- partial('_widget/' + widget) %>
+  <% }) %>
 </aside>
