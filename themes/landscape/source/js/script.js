@@ -134,4 +134,44 @@
 
     $container.removeClass('mobile-nav-on');
   });
+
+  (function () {
+    var TRAVIS_FEED = 'https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom';
+    $ul = $('#js-travis-ci-builds');
+    $.get(TRAVIS_FEED, function(res) {
+      $(res).find('entry').each(function (i, element) {
+        if (i == 10) { return false; }
+        var $element = $(element);
+
+        var entry = {
+          id:      $element.find('id').text(),
+          title:   $element.find('title').text(),
+          link:    $element.find('link').attr('href'),
+          updated: $element.find('updated').text(),
+          summary: $element.find('summary').text(),
+          author:  $element.find('author').text(),
+          build:   $element.find('title').text().split('#')[1]
+        }
+
+        var summaryList = $(entry.summary).html().split(/<br>/)
+        var summary = {
+          title: summaryList[0].trim(),
+          status: summaryList[2].trim().split(':')[1].trim().toLowerCase(),
+          started: summaryList[3].trim(),
+          finished: summaryList[4].trim()
+        }
+
+        $ul.append(
+          '<li class="travis-entry ' + summary.status + '">'
+          + '<a href="' + entry.link + '" data-id=' + entry.id + '>'
+          +   '<span class="travis-build">#' + entry.build + '</span>'
+          +   '<span class="travis-title">' + summary.title + '</span>'
+          +   '<date class="travis-updated">' + moment(entry.updated).fromNow() + '</date>'
+          + '</div>'
+          + '</li>'
+        )
+       });
+    });
+  })();
+
 })(jQuery);
