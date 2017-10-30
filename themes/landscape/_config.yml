@@ -11,9 +11,8 @@ fancybox: true
 # Sidebar
 sidebar: right
 widgets:
-- travis_ci
 - recent_posts
-- tagcloud
+- travis_ci
 - link
 
 # display widgets at the bottom of index pages (pagination == 2)
