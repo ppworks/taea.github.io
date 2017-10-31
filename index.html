@@ -77,6 +77,99 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-245.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/245/" class="article-date">
+  <time datetime="2017-10-31T10:06:58.000Z" itemprop="datePublished">2017-10-31 19:06:58</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/posts/245/">勉強/2017/10/31/Hexo のサイドバーに travis の builds を表示した</a>
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Copied from: <a href="/posts/243">blog/勉強/2017/10/30/Hexo と esa 連携するときの travis の設定</a></p>
+<p>travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるので<a href="https://github.com/ppworks/ppworks.github.io/commit/fbf303984bde502b0329df34951e524052feb26c" target="_blank" rel="external">JavaScriptで持ってきてパース</a>する。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。</p>
+<blockquote>
+<p><a href="https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom" target="_blank" rel="external">https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom</a></p>
+</blockquote>
+<p><img src="https://img.esa.io/uploads/production/attachments/4729/2017/10/31/11/f854941d-2b7e-4ae3-bc36-9fe51bfa6bb5.png" width="300"></p>
+<p>それっぽく表示するために、各ステータスのtravis-ci上での色を調べてた。</p>
+<table>
+<thead>
+<tr>
+<th>status</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>received</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>queued</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>created</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>booting</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>started</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>canceled</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #9d9d9d; color: #9d9d9d; background-color: #fff; padding: 3px 6px 3px 6px;">#9d9d9d</span></td>
+</tr>
+<tr>
+<td>passed</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #39aa56; color: #39aa56; background-color: #fff; padding: 3px 6px 3px 6px;">#39aa56</span></td>
+</tr>
+<tr>
+<td>errored</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
+</tr>
+<tr>
+<td>failed</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
+</tr>
+</tbody>
+</table>
+<p>ステータスの一覧がtravis-ciのドキュメントで探し出せず、CSSのスタイルから調べることになった。各ステータスの正しい順序は未検証。できれば各ステータスの意味も正確に知りたい気持ちもある。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9ex4lx3000cwt2l6hzo3kdb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-244.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/244/" class="article-date">
@@ -122,7 +215,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9ew3mnb000bwx2l2iknkgpc" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9ex4lx1000bwt2l6gtzi5jt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -166,7 +259,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9ew3mn70008wx2lbpjjxe1s" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9ex4lww0008wt2lyyzeg2px" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9ew3mn30007wx2lyzhww3p0" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9ex4lwu0007wt2lroilg98w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -265,7 +358,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9ew3mn10005wx2l1en2xya2" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9ex4lwr0005wt2llqfmt7pi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -318,7 +411,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9ew3mmx0004wx2lgt06rr0l" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9ex4lwn0004wt2l9t4mg3mg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -358,7 +451,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9ew3mmw0003wx2lpsacl5hq" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9ex4lwl0003wt2lcw2sxcfg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -403,7 +496,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9ew3mmn0001wx2lqed8c4kf" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9ex4lwd0001wt2liaz3kkwj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -474,7 +567,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9ew3mmf0000wx2lmp49zd1y" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9ex4lw40000wt2lh758w0ez" class="article-share-link">Share</a>
       
       
     </footer>
@@ -498,6 +591,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/245/">Hexo のサイドバーに travis の builds を表示した</a>
+          </li>
+        
+          <li>
             <a href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
           </li>
         
@@ -511,10 +608,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/241/">Hexo</a>
-          </li>
-        
-          <li>
-            <a href="/posts/240/">Hexo</a>
           </li>
         
       </ul>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo のサイドバーに travis の builds を表示した | 雑なアウトプット</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Copied from: blog/勉強/2017/10/30/Hexo と esa 連携するときの travis の設定 travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるのでJavaScriptで持ってきてパースする。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。  https://api.travis-ci.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo のサイドバーに travis の builds を表示した">
+<meta property="og:url" content="https://ppworks.github.io/posts/245/index.html">
+<meta property="og:site_name" content="雑なアウトプット">
+<meta property="og:description" content="Copied from: blog/勉強/2017/10/30/Hexo と esa 連携するときの travis の設定 travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるのでJavaScriptで持ってきてパースする。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。  https://api.travis-ci.">
+<meta property="og:locale" content="ja">
+<meta property="og:image" content="https://img.esa.io/uploads/production/attachments/4729/2017/10/31/11/f854941d-2b7e-4ae3-bc36-9fe51bfa6bb5.png">
+<meta property="og:updated_time" content="2017-10-31T01:11:40.026Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo のサイドバーに travis の builds を表示した">
+<meta name="twitter:description" content="Copied from: blog/勉強/2017/10/30/Hexo と esa 連携するときの travis の設定 travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるのでJavaScriptで持ってきてパースする。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。  https://api.travis-ci.">
+<meta name="twitter:image" content="https://img.esa.io/uploads/production/attachments/4729/2017/10/31/11/f854941d-2b7e-4ae3-bc36-9fe51bfa6bb5.png">
+  
+    <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-52654728-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">雑なアウトプット</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/posts">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-245.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/245/" class="article-date">
+  <time datetime="2017-10-31T10:06:58.000Z" itemprop="datePublished">2017-10-31 19:06:58</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  
+    <h1 class="article-title" itemprop="name">
+      勉強/2017/10/31/Hexo のサイドバーに travis の builds を表示した
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Copied from: <a href="/posts/243">blog/勉強/2017/10/30/Hexo と esa 連携するときの travis の設定</a></p>
+<p>travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるので<a href="https://github.com/ppworks/ppworks.github.io/commit/fbf303984bde502b0329df34951e524052feb26c" target="_blank" rel="external">JavaScriptで持ってきてパース</a>する。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。</p>
+<blockquote>
+<p><a href="https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom" target="_blank" rel="external">https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom</a></p>
+</blockquote>
+<p><img src="https://img.esa.io/uploads/production/attachments/4729/2017/10/31/11/f854941d-2b7e-4ae3-bc36-9fe51bfa6bb5.png" width="300"></p>
+<p>それっぽく表示するために、各ステータスのtravis-ci上での色を調べてた。</p>
+<table>
+<thead>
+<tr>
+<th>status</th>
+<th>color</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>received</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>queued</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>created</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>booting</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>started</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
+</tr>
+<tr>
+<td>canceled</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #9d9d9d; color: #9d9d9d; background-color: #fff; padding: 3px 6px 3px 6px;">#9d9d9d</span></td>
+</tr>
+<tr>
+<td>passed</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #39aa56; color: #39aa56; background-color: #fff; padding: 3px 6px 3px 6px;">#39aa56</span></td>
+</tr>
+<tr>
+<td>errored</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
+</tr>
+<tr>
+<td>failed</td>
+<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
+</tr>
+</tbody>
+</table>
+<p>ステータスの一覧がtravis-ciのドキュメントで探し出せず、CSSのスタイルから調べることになった。各ステータスの正しい順序は未検証。できれば各ステータスの意味も正確に知りたい気持ちもある。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9ex4lx3000cwt2l6hzo3kdb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/244/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Seed FuをPostgreSQL 10 対応する
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/245/">Hexo のサイドバーに travis の builds を表示した</a>
+          </li>
+        
+          <li>
+            <a href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
+          </li>
+        
+          <li>
+            <a href="/posts/243/">Hexo と esa 連携するときの travis の設定</a>
+          </li>
+        
+          <li>
+            <a href="/posts/242/">Hexo を esa ぽい URL にする</a>
+          </li>
+        
+          <li>
+            <a href="/posts/241/">Hexo</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">Builds</h3>
+  <div class="widget">
+    <a href="https://travis-ci.org/ppworks/ppworks.github.io/builds"><img class="travis-badge" src="https://travis-ci.org/ppworks/ppworks.github.io.svg?branch=esa" /></a>
+    <ul id="js-travis-ci-builds" class="travis-list">
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <div class="widget">
+    <ul>
+      <li><a href="https://taea.github.io">taea.github.io</a></li>
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 ppworks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/posts" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
