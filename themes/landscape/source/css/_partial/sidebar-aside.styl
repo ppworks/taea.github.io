@@ -36,14 +36,18 @@
   margin-bottom: 2px
   padding: 5px 5px 5px 15px
 
-.travis-entry.passed
-  background: linear-gradient(to right,#39aa56 0,#39aa56 5px,#fff 5px,#fff 100%) no-repeat
+.travis-entry
+  &.booting, &.created, &.queued, &.received, &.started
+    background: linear-gradient(to right,#edde3f 0,#edde3f 5px,#fff 5px,#fff 100%) no-repeat
 
-.travis-entry.canceled
-  background: linear-gradient(to right,#9d9d9d 0,#9d9d9d 5px,#fff 5px,#fff 100%) no-repeat
+  &.canceled
+    background: linear-gradient(to right,#9d9d9d 0,#9d9d9d 5px,#fff 5px,#fff 100%) no-repeat
 
-.travis-entry.failed
-  background: linear-gradient(to right,#db4545 0,#db4545 5px,#fff 5px,#fff 100%) no-repeat
+  &.passed
+    background: linear-gradient(to right,#39aa56 0,#39aa56 5px,#fff 5px,#fff 100%) no-repeat
+
+  &.errored, &.failed
+    background: linear-gradient(to right,#db4545 0,#db4545 5px,#fff 5px,#fff 100%) no-repeat
 
 .travis-entry a
   color: #666
