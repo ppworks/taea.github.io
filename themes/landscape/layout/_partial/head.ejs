@@ -33,4 +33,24 @@
   <% } %>
   <%- css('css/style') %>
   <%- partial('google-analytics') %>
+  <script type="text/javascript" src="https://s.hatena.ne.jp/js/HatenaStar.js"></script>
+  <script type="text/javascript">
+    Hatena.Star.Token = 'fc701925dcee0a5423226786dd300651d572ca5e';
+    Hatena.Star.SiteConfig = {
+      entryNodes: {
+        'article.article': [
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: 'header.article-header h1'
+          },
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: '.article-footer'
+          }
+        ]
+      }
+    };
+  </script>
 </head>
