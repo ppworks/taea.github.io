@@ -42,11 +42,18 @@ ga('send', 'pageview');
     Hatena.Star.Token = 'fc701925dcee0a5423226786dd300651d572ca5e';
     Hatena.Star.SiteConfig = {
       entryNodes: {
-        'article.article': {
-          uri: window.location.href,
-          title: document.title,
-          container: 'header.article-header'
-        }
+        'article.article': [
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: 'header.article-header h1'
+          },
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: '.article-footer'
+          }
+        ]
       }
     };
   </script>
@@ -76,9 +83,9 @@ ga('send', 'pageview');
       <nav id="sub-nav">
         <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
@@ -103,11 +110,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/249/">Heroku SSL EndpointからAutomated Certificate Managementへ移行する</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/249/">Heroku SSL EndpointからAutomated Certificate Managementへ移行する</a>
+  </h1>
 
 
       </header>
@@ -142,7 +147,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9gt0dk1000dwy2lk5jdxo5u" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9gu0p7d000gx22vfo2ey50i" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -166,11 +171,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/245/">勉強/2017/10/31/Hexo のサイドバーに travis の builds を表示した</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/245/">勉強/2017/10/31/Hexo のサイドバーに travis の builds を表示した</a>
+  </h1>
 
 
       </header>
@@ -235,7 +238,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9gt0djx000bwy2l4d2cqcx7" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9gu0p77000cx22viuvykbby" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -259,11 +262,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
+  </h1>
 
 
       </header>
@@ -291,7 +292,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9gt0djo0008wy2lsma6wk8m" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9gu0p74000bx22vf5e8y4ed" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -317,11 +318,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/243/">勉強/2017/10/30/Hexo と esa 連携するときの travis の設定</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/243/">勉強/2017/10/30/Hexo と esa 連携するときの travis の設定</a>
+  </h1>
 
 
       </header>
@@ -335,7 +334,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9gt0djj0007wy2lbvzecuq8" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9gu0p6u0008x22v0dktipc6" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -359,11 +358,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/242/">勉強/2017/10/30/Hexo を esa ぽい URL にする</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/242/">勉強/2017/10/30/Hexo を esa ぽい URL にする</a>
+  </h1>
 
 
       </header>
@@ -379,7 +376,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9gt0djf0005wy2lh1ek3hm5" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9gu0p6q0007x22vy3zt4txr" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -403,11 +400,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/241/">勉強/2017/10/30/Hexo</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/241/">勉強/2017/10/30/Hexo</a>
+  </h1>
 
 
       </header>
@@ -434,7 +429,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9gt0dj80004wy2li28er8ku" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9gu0p6k0005x22vcaiaaf9c" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -458,11 +453,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/240/">勉強/2017/10/29/Hexo</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/240/">勉強/2017/10/29/Hexo</a>
+  </h1>
 
 
       </header>
@@ -487,7 +480,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9gt0dj50003wy2lrtka50ph" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9gu0p6d0004x22v7e5r0ui4" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -511,11 +504,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/239/">てすと</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/239/">てすと</a>
+  </h1>
 
 
       </header>
@@ -527,7 +518,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9gt0dir0001wy2ldgfyodnw" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9gu0p680003x22vjt6v6f7b" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -551,11 +542,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/237/">勉強/2017/10/28/Docker</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/237/">勉強/2017/10/28/Docker</a>
+  </h1>
 
 
       </header>
@@ -572,7 +561,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9gt0dib0000wy2l7rt5u8n7" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9gu0p5u0001x22v7tpufmnk" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -596,11 +585,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/posts/233/">勉強/2017/10/26/Docker</a>
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/233/">勉強/2017/10/26/Docker</a>
+  </h1>
 
 
       </header>
@@ -643,7 +630,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9gt0dk8000gwy2lpc3axsej" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9gu0p590000x22vp4up3cua" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -662,7 +649,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -721,7 +708,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 ppworks<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="雑なアウトプット">
 <meta property="og:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2017-11-01T08:51:38.854Z">
+<meta property="og:updated_time" content="2017-11-01T09:19:59.069Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Seed FuをPostgreSQL 10 対応する">
 <meta name="twitter:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
@@ -47,11 +47,18 @@ ga('send', 'pageview');
     Hatena.Star.Token = 'fc701925dcee0a5423226786dd300651d572ca5e';
     Hatena.Star.SiteConfig = {
       entryNodes: {
-        'article.article': {
-          uri: window.location.href,
-          title: document.title,
-          container: 'header.article-header'
-        }
+        'article.article': [
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: 'header.article-header h1'
+          },
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: '.article-footer'
+          }
+        ]
       }
     };
   </script>
@@ -81,9 +88,9 @@ ga('send', 'pageview');
       <nav id="sub-nav">
         <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
@@ -106,11 +113,9 @@ ga('send', 'pageview');
       <header class="article-header">
         
 
-  
-    <h1 class="article-title" itemprop="name">
-      Seed FuをPostgreSQL 10 対応する
-    </h1>
-  
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
+  </h1>
 
 
       </header>
@@ -138,7 +143,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9gt0djo0008wy2lsma6wk8m" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9gu0p74000bx22vf5e8y4ed" class="article-share-link">Partager</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -150,7 +155,7 @@ ga('send', 'pageview');
 <nav id="article-nav">
   
     <a href="/posts/243/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
+      <strong class="article-nav-caption">Récent</strong>
       <div class="article-nav-title">
         
           Hexo と esa 連携するときの travis の設定
@@ -159,9 +164,9 @@ ga('send', 'pageview');
     </a>
   
   
-    <a href="/posts/233/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Docker</div>
+    <a href="/posts/245/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Ancien</strong>
+      <div class="article-nav-title">Hexo のサイドバーに travis の builds を表示した</div>
     </a>
   
 </nav>
@@ -176,7 +181,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
         
@@ -235,7 +240,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 ppworks<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
