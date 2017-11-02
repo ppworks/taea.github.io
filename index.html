@@ -97,6 +97,52 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-250.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/250/" class="article-date">
+  <time datetime="2017-11-02T12:54:15.000Z" itemprop="datePublished">2017-11-02 12:54:15</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/250/">Dockerでrails new</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Macのローカルで<code>rails new</code>する際に、最初にどこかに<code>rails</code>が必要なのが嫌で、<code>rails new</code>で出来たディレクトリだけ欲しくて、<code>Dockerfile</code>を書いてみた。</p>
+<p><a href="https://github.com/ppworks/docker-rails_new" target="_blank" rel="external">https://github.com/ppworks/docker-rails_new</a></p>
+<h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> ruby:<span class="number">2.4</span>.<span class="number">2</span>-slim</div><div class="line"><span class="keyword">MAINTAINER</span> Naoto Koshikawa &lt;koshikawa@ppworks.jp&gt;</div><div class="line"></div><div class="line"><span class="keyword">ENV</span> DEBIAN_FRONTEND noninteractive</div><div class="line"></div><div class="line"><span class="keyword">RUN</span> apt-get update -qq &amp;&amp; \</div><div class="line">    apt-get -y install build-essential # nio4r</div><div class="line"></div><div class="line">RUN mkdir /app</div><div class="line">WORKDIR /app</div><div class="line">COPY Gemfile /app/Gemfile</div><div class="line">RUN bundle install -j4</div></pre></td></tr></table></figure>
+<h2 id="Gemfile"><a href="#Gemfile" class="headerlink" title="Gemfile"></a>Gemfile</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ruby &apos;2.4.2&apos;</div><div class="line">source &apos;https://rubygems.org&apos;</div><div class="line">gem &apos;rails&apos;, &apos;&gt;= 5.1&apos;</div></pre></td></tr></table></figure>
+<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">version: &apos;3&apos;</div><div class="line">services:</div><div class="line">  rails:</div><div class="line">    build:</div><div class="line">      context: .</div><div class="line">      dockerfile: Dockerfile</div><div class="line">    volumes:</div><div class="line">      - &quot;.:/app&quot;</div><div class="line">    tty: true</div><div class="line">    stdin_open: true</div></pre></td></tr></table></figure>
+<h2 id="rails-new"><a href="#rails-new" class="headerlink" title="rails new"></a>rails new</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git@github.com:ppworks/docker-rails_new.git</div><div class="line">cd docker-rails_new</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t rails-new .</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-compose run --rm rails rails new your-awesome-app --skip-bundle</div></pre></td></tr></table></figure>
+<p>Dockerよくわかってないので、もっとかっこいい方法があるかもしれない。<br>次は、Docker上で<code>rails s</code>してみたいと思う。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9hxuryk000hwy2ts8e65cql" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-249.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/249/" class="article-date">
@@ -147,7 +193,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9guvhqa000gwz2t3ovmcjdw" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9hxuryh000gwy2tefl03xnp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +284,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9guvhq6000cwz2tcer4uzbe" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9hxuryd000cwy2tw5rmu059" class="article-share-link">Share</a>
       
       
     </footer>
@@ -292,7 +338,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9guvhq4000bwz2tanbp15xi" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9hxuryb000bwy2tbh1d9q9k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -334,7 +380,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9guvhpz0008wz2tyod4cvg4" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9hxury60008wy2tp89yam0b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -376,7 +422,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9guvhpv0007wz2t49j9g0cq" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9hxury30007wy2t5ht4ntdf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -429,7 +475,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9guvhps0005wz2turkuw6m3" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9hxury00005wy2t7s3wxet5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +526,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9guvhpn0004wz2t06fi01no" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9hxurxx0004wy2twb7c3ok9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -518,7 +564,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9guvhpl0003wz2thou0kye4" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9hxurxv0003wy2tx7qdvpi6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -561,76 +607,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9guvhp60001wz2tlh2cwx1j" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-233.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/233/" class="article-date">
-  <time datetime="2017-10-29T14:31:40.000Z" itemprop="datePublished">2017-10-29 14:31:40</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-
-  <h1 itemprop="name">
-    <a class="article-title" href="/posts/233/">勉強/2017/10/26/Docker</a>
-  </h1>
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://docs.docker.com/docker-for-mac/install/" target="_blank" rel="external">https://docs.docker.com/docker-for-mac/install/</a><br>からMac版をダウンロード</p>
-<p><img src="https://img.esa.io/uploads/production/attachments/4729/2017/10/26/11/1360462d-7ab6-4836-acf6-90fa998f8d79.png" alt="image.png (405.5 kB)"></p>
-<p>おーわかりやすい。</p>
-<p>よーし。</p>
-<hr>
-<script async class="speakerdeck-embed" data-id="ceaac0f6da814d88b619648d200bc1db" data-ratio="1.33333333333333" src="//speakerdeck.com/assets/embed.js"></script>
-
-
-<hr>
-<p>WEB+DB PRESS Vol.98</p>
-<table>
-<thead>
-<tr>
-<th>分野</th>
-<th>代表的なツール</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>仮想マシンのOS環境を整える</td>
-<td>Vagrant, kickstart</td>
-</tr>
-<tr>
-<td>ライブラリやミドルウェアを整える</td>
-<td>Chef, Puppet, Ansible</td>
-</tr>
-<tr>
-<td>アプリケーションをデプロイする</td>
-<td>Capistrano</td>
-</tr>
-</tbody>
-</table>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9guvhoy0000wz2twbyplnoc" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9hxurxl0001wy2ty8s7s38o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -642,6 +619,10 @@ ga('send', 'pageview');
 
   
 
+
+  <nav id="page-nav">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next&raquo;</a>
+  </nav>
 
 </section>
         
@@ -652,6 +633,10 @@ ga('send', 'pageview');
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/posts/250/">Dockerでrails new</a>
+          </li>
         
           <li>
             <a href="/posts/249/">Heroku SSL EndpointからAutomated Certificate Managementへ移行する</a>
@@ -667,10 +652,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/243/">Hexo と esa 連携するときの travis の設定</a>
-          </li>
-        
-          <li>
-            <a href="/posts/242/">Hexo を esa ぽい URL にする</a>
           </li>
         
       </ul>
