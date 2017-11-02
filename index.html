@@ -100,7 +100,7 @@ ga('send', 'pageview');
     <article id="post-250.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/250/" class="article-date">
-  <time datetime="2017-11-02T12:54:15.000Z" itemprop="datePublished">2017-11-02 12:54:15</time>
+  <time datetime="2017-11-02T16:12:59.000Z" itemprop="datePublished">2017-11-02 16:12:59</time>
 </a>
 
   </div>
@@ -123,16 +123,16 @@ ga('send', 'pageview');
 <p><a href="https://github.com/ppworks/docker-rails_new" target="_blank" rel="external">https://github.com/ppworks/docker-rails_new</a></p>
 <h2 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h2><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">FROM</span> ruby:<span class="number">2.4</span>.<span class="number">2</span>-slim</div><div class="line"><span class="keyword">MAINTAINER</span> Naoto Koshikawa &lt;koshikawa@ppworks.jp&gt;</div><div class="line"></div><div class="line"><span class="keyword">ENV</span> DEBIAN_FRONTEND noninteractive</div><div class="line"></div><div class="line"><span class="keyword">RUN</span> apt-get update -qq &amp;&amp; \</div><div class="line">    apt-get -y install build-essential # nio4r</div><div class="line"></div><div class="line">RUN mkdir /app</div><div class="line">WORKDIR /app</div><div class="line">COPY Gemfile /app/Gemfile</div><div class="line">RUN bundle install -j4</div></pre></td></tr></table></figure>
 <h2 id="Gemfile"><a href="#Gemfile" class="headerlink" title="Gemfile"></a>Gemfile</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">ruby &apos;2.4.2&apos;</div><div class="line">source &apos;https://rubygems.org&apos;</div><div class="line">gem &apos;rails&apos;, &apos;&gt;= 5.1&apos;</div></pre></td></tr></table></figure>
-<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">version: &apos;3&apos;</div><div class="line">services:</div><div class="line">  rails:</div><div class="line">    build:</div><div class="line">      context: .</div><div class="line">      dockerfile: Dockerfile</div><div class="line">    volumes:</div><div class="line">      - &quot;.:/app&quot;</div><div class="line">    tty: true</div><div class="line">    stdin_open: true</div></pre></td></tr></table></figure>
-<h2 id="rails-new"><a href="#rails-new" class="headerlink" title="rails new"></a>rails new</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git@github.com:ppworks/docker-rails_new.git</div><div class="line">cd docker-rails_new</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t rails-new .</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-compose run --rm rails rails new your-awesome-app --skip-bundle</div></pre></td></tr></table></figure>
+<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">version: &apos;3&apos;</div><div class="line">services:</div><div class="line">  rails-new:</div><div class="line">    build:</div><div class="line">      context: .</div><div class="line">      dockerfile: Dockerfile</div><div class="line">    volumes:</div><div class="line">      - &quot;.:/app&quot;</div><div class="line">    tty: true</div><div class="line">    stdin_open: true</div></pre></td></tr></table></figure>
+<h2 id="rails-new"><a href="#rails-new" class="headerlink" title="rails new"></a>rails new</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cd ~/docker</div><div class="line">git@github.com:ppworks/docker-rails_new.git dev</div><div class="line">cd dev</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker-compose run --rm rails-new rails new your-awesome-app --skip-bundle</div></pre></td></tr></table></figure>
 <p>Dockerよくわかってないので、もっとかっこいい方法があるかもしれない。<br>次は、Docker上で<code>rails s</code>してみたいと思う。</p>
+<h2 id="追記"><a href="#追記" class="headerlink" title="追記"></a>追記</h2><p>2017-11-02 16:12<br><a href="https://github.com/ppworks/docker-rails_new/pull/1" target="_blank" rel="external">https://github.com/ppworks/docker-rails_new/pull/1</a><br>の内容を反映した。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9hxuryk000hwy2ts8e65cql" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9i4ygv5000hx02gmkziq29o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -193,7 +193,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9hxuryh000gwy2tefl03xnp" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9i4ygv1000gx02gz210uv6x" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +284,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9hxuryd000cwy2tw5rmu059" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9i4yguu000cx02gm1qix7n8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +338,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9hxuryb000bwy2tbh1d9q9k" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9i4ygur000bx02ghrz38bvi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -380,7 +380,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9hxury60008wy2tp89yam0b" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9i4yguf0008x02g75tocupd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -422,7 +422,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9hxury30007wy2t5ht4ntdf" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9i4ygua0007x02gudn1via5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -475,7 +475,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9hxury00005wy2t7s3wxet5" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9i4ygu40005x02gcaa8hwqz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -526,7 +526,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9hxurxx0004wy2twb7c3ok9" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9i4ygtx0004x02g3tjy52t2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -564,7 +564,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9hxurxv0003wy2tx7qdvpi6" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9i4ygtt0003x02g804kc9ml" class="article-share-link">Share</a>
       
       
     </footer>
@@ -607,7 +607,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9hxurxl0001wy2ty8s7s38o" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9i4ygt60001x02g7mot60pa" class="article-share-link">Share</a>
       
       
     </footer>
