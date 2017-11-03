@@ -83,9 +83,9 @@ ga('send', 'pageview');
       <nav id="sub-nav">
         <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
@@ -96,6 +96,49 @@ ga('send', 'pageview');
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-237.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/237/" class="article-date">
+  <time datetime="2017-10-29T14:32:44.000Z" itemprop="datePublished">2017-10-29 14:32:44</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/237/">勉強/2017/10/28/Docker</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Copied from: <a href="/posts/233">勉強/2017/10/26/Docker</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">docker pull httpd</div><div class="line">docker image list</div><div class="line">docker container list</div><div class="line">docker run -d -p 8080:80 httpd:latest</div><div class="line">docker ps</div><div class="line">docker container stop</div><div class="line">docker container rm</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker volume ls</div><div class="line">docker volume create myvolume</div></pre></td></tr></table></figure>
+<blockquote>
+<p><a href="https://qiita.com/noralife/items/18301143c20cc5172c56" target="_blank" rel="external">よく使うDockerコマンド - Qiita</a><br>コンテナをつくってログインする: <code>docker run -it</code><br>コンテナをバックグランドで動作させる: <code>docker run -d</code><br>コンテナを環境変数で設定する: <code>docker run -e</code></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cj9jmxk7w0001x82u6ddewja9" class="article-share-link">Partager</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-233.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -155,7 +198,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9i4ygsq0000x02gv8oqy9sg" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/233/" data-id="cj9jmxk7i0000x82uadfkg84f" class="article-share-link">Partager</a>
       
       
     </footer>
@@ -169,7 +212,7 @@ ga('send', 'pageview');
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo;Précédent</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>
@@ -178,9 +221,13 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Articles récents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/posts/251/">Docker で Rails s</a>
+          </li>
         
           <li>
             <a href="/posts/250/">Dockerでrails new</a>
@@ -196,10 +243,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
-          </li>
-        
-          <li>
-            <a href="/posts/243/">Hexo と esa 連携するときの travis の設定</a>
           </li>
         
       </ul>
@@ -237,7 +280,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2017 ppworks<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
