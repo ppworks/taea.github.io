@@ -100,7 +100,7 @@ ga('send', 'pageview');
     <article id="post-251.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/251/" class="article-date">
-  <time datetime="2017-11-03T17:33:58.000Z" itemprop="datePublished">2017-11-03 17:33:58</time>
+  <time datetime="2017-11-03T18:10:37.000Z" itemprop="datePublished">2017-11-03 18:10:37</time>
 </a>
 
   </div>
@@ -122,7 +122,7 @@ ga('send', 'pageview');
         <p><a href="/posts/250">#250:  blog/Dockerでrails new</a> 出来たので今回は、<code>rails s</code>したくていろいろ調べながら、最低限の<code>Dockerfile</code>と<code>docker-comose.yml</code>が出来上がったのでメモ。</p>
 <h2 id="Dockerfile-dev"><a href="#Dockerfile-dev" class="headerlink" title="Dockerfile-dev"></a>Dockerfile-dev</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">FROM ruby:2.4.2-slim</div><div class="line">MAINTAINER Naoto Koshikawa &lt;koshikawa@ppworks.jp&gt;</div><div class="line"></div><div class="line">ENV DEBIAN_FRONTEND noninteractive</div><div class="line"></div><div class="line"># set locale and timezone</div><div class="line">RUN apt-get update -qq &amp;&amp; \</div><div class="line">  apt-get -y upgrade &amp;&amp; \</div><div class="line">  apt-get -y install locales &amp;&amp; \</div><div class="line">  apt-get clean &amp;&amp; \</div><div class="line">  apt-get autoclean &amp;&amp; \</div><div class="line">  apt-get autoremove &amp;&amp; \</div><div class="line">  echo en_US.UTF-8 UTF-8 &gt; /etc/locale.gen &amp;&amp; locale-gen &amp;&amp; dpkg-reconfigure locales &amp;&amp; \</div><div class="line">  echo &quot;Asia/Tokyo&quot; &gt; /etc/timezone &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</div><div class="line"></div><div class="line">ENV TZ Asia/Tokyo</div><div class="line"></div><div class="line">RUN apt-get -y --no-install-recommends install \</div><div class="line">  build-essential \</div><div class="line">  libpq-dev \</div><div class="line">  nodejs \</div><div class="line">  wget</div><div class="line"></div><div class="line">ENV ENTRYKIT_VERSION 0.4.0</div><div class="line">RUN wget https://github.com/progrium/entrykit/releases/download/v$&#123;ENTRYKIT_VERSION&#125;/entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</div><div class="line">  &amp;&amp; tar -xvzf entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</div><div class="line">  &amp;&amp; rm entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</div><div class="line">  &amp;&amp; mv entrykit /bin/entrykit \</div><div class="line">  &amp;&amp; chmod +x /bin/entrykit \</div><div class="line">  &amp;&amp; entrykit --symlink</div><div class="line"></div><div class="line">RUN mkdir /app</div><div class="line">WORKDIR /app</div><div class="line"></div><div class="line">ENTRYPOINT [ \</div><div class="line">  &quot;prehook&quot;, &quot;bundle install -j4 --quiet&quot;, &quot;--&quot;]</div></pre></td></tr></table></figure>
 <h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">version: &apos;3&apos;</div><div class="line">services:</div><div class="line">  rails: &amp;app_base</div><div class="line">    build:</div><div class="line">      context: .</div><div class="line">      dockerfile: Dockerfile-dev</div><div class="line">    environment:</div><div class="line">      DATABASE_URL: &quot;postgres://postgres:@db:5432/your_app_development&quot;</div><div class="line">    volumes:</div><div class="line">      - &quot;.:/app&quot;</div><div class="line">    ports:</div><div class="line">      - &quot;3000:3000&quot;</div><div class="line">    depends_on:</div><div class="line">      - db</div><div class="line">    command: [&quot;bundle&quot;, &quot;exec&quot;, &quot;rails&quot;, &quot;s&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]</div><div class="line">  db:</div><div class="line">    image: &quot;postgres:10.0&quot;</div><div class="line">    volumes:</div><div class="line">      - pg-data:/var/lib/postgresql/data</div><div class="line">volumes:</div><div class="line">  pg-data:</div><div class="line">    driver: local</div></pre></td></tr></table></figure>
-<h2 id="gitignore"><a href="#gitignore" class="headerlink" title=".gitignore"></a>.gitignore</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.git</div><div class="line">doc</div><div class="line">docker-compose.yml</div><div class="line">log</div><div class="line">tmp</div><div class="line">Dockerfile</div><div class="line">Dockerfile-dev</div></pre></td></tr></table></figure>
+<h2 id="dockerignore"><a href="#dockerignore" class="headerlink" title=".dockerignore"></a>.dockerignore</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">.git</div><div class="line">doc</div><div class="line">docker-compose.yml</div><div class="line">log</div><div class="line">tmp</div><div class="line">Dockerfile</div><div class="line">Dockerfile-dev</div></pre></td></tr></table></figure>
 <h2 id="config-database-yml"><a href="#config-database-yml" class="headerlink" title="config/database.yml"></a>config/database.yml</h2><p>雑に環境変数<code>DATABASE_URL</code>で繋ぐようにしてみた。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">default: &amp;default</div><div class="line">  adapter: postgresql</div><div class="line">  encoding: unicode</div><div class="line">  pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) &#123; 5 &#125; %&gt;</div><div class="line">  url: &lt;%= ENV[&apos;DATABASE_URL&apos;] %&gt;</div><div class="line">development:</div><div class="line">  &lt;&lt;: *default</div><div class="line">test:</div><div class="line">  &lt;&lt;: *default</div><div class="line">production:</div><div class="line">  &lt;&lt;: *default</div></pre></td></tr></table></figure>
 <h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><p><code>Dockerfile</code>を更新した場合は</p>
@@ -155,7 +155,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cj9jnbdk3000kx52ts5armk00" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/251/" data-id="cj9joswcc000kx52tj13dqee4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +201,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9jnbdk1000hx52tibnr3r8e" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9joswca000hx52te4byc5l8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +262,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9jnbdjy000gx52tlqufuf7o" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9joswc7000gx52t6f7vfd60" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +353,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9jnbdjs000cx52tlxfgngb3" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9joswc1000cx52tcj2x282t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -407,7 +407,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9jnbdjp000bx52t6w0t2qca" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9joswbz000bx52t6c8dj9b4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
@@ -449,7 +449,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9jnbdjh0008x52twompce2g" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9joswbt0008x52tpl2biu9e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -491,7 +491,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9jnbdje0007x52teps7jhbd" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9joswbs0007x52t8rpleiln" class="article-share-link">Share</a>
       
       
     </footer>
@@ -544,7 +544,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9jnbdja0005x52tw34psfvu" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9joswbp0005x52t8u0e33z4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -595,7 +595,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9jnbdj40004x52t7f2y97q2" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9joswbk0004x52trpj147lu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -633,7 +633,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9jnbdj00003x52tp5t4zq1b" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9joswb80001x52tyisgd74i" class="article-share-link">Share</a>
       
       
     </footer>
