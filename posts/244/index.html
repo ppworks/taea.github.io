@@ -6,14 +6,14 @@
   <title>Seed FuをPostgreSQL 10 対応する | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
-<meta name="keywords" content="Rails">
+<meta name="keywords" content="rails">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Seed FuをPostgreSQL 10 対応する">
 <meta property="og:url" content="https://ppworks.github.io/posts/244/index.html">
 <meta property="og:site_name" content="雑なアウトプット">
 <meta property="og:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-09T01:57:38.554Z">
+<meta property="og:updated_time" content="2017-11-09T02:28:37.462Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Seed FuをPostgreSQL 10 対応する">
 <meta name="twitter:description" content="当面は、https://github.com/ppworks/seed-fu/tree/support-postgresql10 を使う。  https://www.postgresql.org/docs/10/static/release-10.htmlMove sequences’ metadata fields into a new pg_sequence system catalog (P">
@@ -103,7 +103,7 @@ ga('send', 'pageview');
         <section id="main"><article id="post-244.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/244/" class="article-date">
-  <time datetime="2017-10-31T06:01:19.000Z" itemprop="datePublished">2017-10-31 06:01:19</time>
+  <time datetime="2017-11-09T11:28:05.000Z" itemprop="datePublished">2017-11-09 11:28:05</time>
 </a>
 
   </div>
@@ -133,7 +133,7 @@ ga('send', 'pageview');
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT increment_by FROM #&#123;sequence&#125;), (SELECT min_value FROM #&#123;sequence&#125;)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;), false)</span></div></pre></td></tr></table></figure>
 <p>エラーはこんな感じ</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">Failure/Error: SeedFu.seed</div><div class="line"></div><div class="line">ActiveRecord::StatementInvalid:</div><div class="line">  PG::UndefinedColumn: ERROR:  column &quot;increment_by&quot; does not exist</div></pre></td></tr></table></figure>
-<p>以下のように、新たに導入された<code>pg_sequence</code>カタログを参照するように変更した。</p>
+<p>以下のように、新たに導入された<code>pg_sequence</code>カタログを参照するように<a href="https://github.com/mbleigh/seed-fu/pull/121" target="_blank" rel="external">変更した</a>。</p>
 <figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT seqincrement FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass), (SELECT seqmin FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;),</span></div></pre></td></tr></table></figure>
 <p>ちなみにRailsの類似処理は既にマージされていた。</p>
 <blockquote>
@@ -143,10 +143,10 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9rtqnfk000cy62u9sgszjw4" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9ruu8gn000cx12r09dyz4a6" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Rails/">Rails</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
 
     </footer>
   </div>
