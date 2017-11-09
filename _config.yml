@@ -53,6 +53,9 @@ index_generator:
   per_page: 10
   order_by: -number
 
+archive_generator:
+  order_by: -number
+
 # Category & Tag
 default_category: uncategorized
 category_map:
