@@ -3,19 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>てすと | 雑なアウトプット</title>
+  <title>Hexo の archives の表示順序を変える | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="てすてす。">
+  <meta name="description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
+<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="てすと">
-<meta property="og:url" content="https://ppworks.github.io/posts/239/index.html">
+<meta property="og:title" content="Hexo の archives の表示順序を変える">
+<meta property="og:url" content="https://ppworks.github.io/posts/253/index.html">
 <meta property="og:site_name" content="雑なアウトプット">
-<meta property="og:description" content="てすてす。">
+<meta property="og:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
 <meta property="og:locale" content="en">
 <meta property="og:updated_time" content="2017-11-09T02:53:12.868Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="てすと">
-<meta name="twitter:description" content="てすてす。">
+<meta name="twitter:title" content="Hexo の archives の表示順序を変える">
+<meta name="twitter:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
   
     <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
   
@@ -99,10 +100,10 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-239.html" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-253.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/posts/239/" class="article-date">
-  <time datetime="2017-10-29T21:37:26.000Z" itemprop="datePublished">2017-10-29 21:37:26</time>
+    <a href="/posts/253/" class="article-date">
+  <time datetime="2017-11-09T11:52:38.000Z" itemprop="datePublished">2017-11-09 11:52:38</time>
 </a>
 
   </div>
@@ -113,7 +114,7 @@ ga('send', 'pageview');
         
 
   <h1 itemprop="name">
-    <a class="article-title" href="/posts/239/">てすと</a>
+    <a class="article-title" href="/posts/253/">Hexo の archives の表示順序を変える</a>
   </h1>
 
 
@@ -121,34 +122,38 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>てすてす。</p>
+        <p><a href="https://github.com/hexojs/hexo-generator-index" target="_blank" rel="external">hexo-generator-index</a>にはある<code>order_by</code>オプションが<a href="https://github.com/hexojs/hexo-generator-archive" target="_blank" rel="external">hexo-generator-archive</a>には、なかったので足した。</p>
+<blockquote>
+<p><a href="https://github.com/hexojs/hexo-generator-archive/pull/9" target="_blank" rel="external">Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive</a></p>
+</blockquote>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   var config = this.config;</div><div class="line">   var archiveDir = config.archive_dir;</div><div class="line">   var paginationDir = config.pagination_dir || 'page';</div><div class="line"><span class="deletion">-  var allPosts = locals.posts.sort('-date');</span></div><div class="line"><span class="addition">+  var allPosts = locals.posts.sort(config.archive_generator.order_by || '-date');</span></div><div class="line">   var perPage = config.archive_generator.per_page;</div><div class="line">   var result = [];</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/hexojs/hexo-generator-archive/releases/tag/0.1.5" target="_blank" rel="external"><strong>0.1.5</strong></a>以降を使うと<code>order_by</code>オプションが使えるようになるので、<a href="https://github.com/ppworks/ppworks.github.io/commit/d1dcdbd708e327953acda9c1a474b37e5ef78d6a" target="_blank" rel="external">こんな感じで</a><code>_config.yml</code>に<code>order_by</code>を追加する。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">diff --git a/_config.yml b/_config.yml</div><div class="line">index 9c306f1..232f072 100644</div><div class="line"><span class="comment">--- a/_config.yml</span></div><div class="line"><span class="comment">+++ b/_config.yml</span></div><div class="line">@@ -53,6 +53,9 @@ index_generator:</div><div class="line">   per_page: 10</div><div class="line">   order_by: -number</div><div class="line"></div><div class="line"><span class="addition">+archive_generator:</span></div><div class="line"><span class="addition">+  order_by: -number</span></div><div class="line"><span class="addition">+</span></div><div class="line"> # Category &amp; Tag</div><div class="line"> default_category: uncategorized</div><div class="line"> category_map:</div></pre></td></tr></table></figure>
+<p>このhexoはesaと連携しているので、<code>index</code>と同じように<code>number</code>の降順にした。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9rvpsxq0003x12w7i6ugrl6" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="cj9rvpsyu000mx12w2vucb655" class="article-share-link">Share</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/posts/233/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/posts/251/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Docker の導入と概念の理解
+          Dockerでrails s
         
       </div>
     </a>
   
-  
-    <a href="/posts/240/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">GitHub Page を Hexo で作る</div>
-    </a>
   
 </nav>
 

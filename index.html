@@ -97,6 +97,53 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-253.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/253/" class="article-date">
+  <time datetime="2017-11-09T11:52:38.000Z" itemprop="datePublished">2017-11-09 11:52:38</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/253/">Hexo の archives の表示順序を変える</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="https://github.com/hexojs/hexo-generator-index" target="_blank" rel="external">hexo-generator-index</a>にはある<code>order_by</code>オプションが<a href="https://github.com/hexojs/hexo-generator-archive" target="_blank" rel="external">hexo-generator-archive</a>には、なかったので足した。</p>
+<blockquote>
+<p><a href="https://github.com/hexojs/hexo-generator-archive/pull/9" target="_blank" rel="external">Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive</a></p>
+</blockquote>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">   var config = this.config;</div><div class="line">   var archiveDir = config.archive_dir;</div><div class="line">   var paginationDir = config.pagination_dir || 'page';</div><div class="line"><span class="deletion">-  var allPosts = locals.posts.sort('-date');</span></div><div class="line"><span class="addition">+  var allPosts = locals.posts.sort(config.archive_generator.order_by || '-date');</span></div><div class="line">   var perPage = config.archive_generator.per_page;</div><div class="line">   var result = [];</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/hexojs/hexo-generator-archive/releases/tag/0.1.5" target="_blank" rel="external"><strong>0.1.5</strong></a>以降を使うと<code>order_by</code>オプションが使えるようになるので、<a href="https://github.com/ppworks/ppworks.github.io/commit/d1dcdbd708e327953acda9c1a474b37e5ef78d6a" target="_blank" rel="external">こんな感じで</a><code>_config.yml</code>に<code>order_by</code>を追加する。</p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">diff --git a/_config.yml b/_config.yml</div><div class="line">index 9c306f1..232f072 100644</div><div class="line"><span class="comment">--- a/_config.yml</span></div><div class="line"><span class="comment">+++ b/_config.yml</span></div><div class="line">@@ -53,6 +53,9 @@ index_generator:</div><div class="line">   per_page: 10</div><div class="line">   order_by: -number</div><div class="line"></div><div class="line"><span class="addition">+archive_generator:</span></div><div class="line"><span class="addition">+  order_by: -number</span></div><div class="line"><span class="addition">+</span></div><div class="line"> # Category &amp; Tag</div><div class="line"> default_category: uncategorized</div><div class="line"> category_map:</div></pre></td></tr></table></figure>
+<p>このhexoはesaと連携しているので、<code>index</code>と同じように<code>number</code>の降順にした。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="cj9rvpsyu000mx12w2vucb655" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-251.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/251/" class="article-date">
@@ -155,7 +202,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cj9rv8ty0000mwz2ibzfaucgm" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/251/" data-id="cj9rvpsys000kx12wfq93fnb2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -201,7 +248,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9rv8txx000jwz2i0s6hx1lt" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cj9rvpsym000hx12whk4kw5lu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +309,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9rv8txs000ewz2ib8bb0u4w" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9rvpsyk000fx12wbze5hqzn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -353,7 +400,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9rv8txq000cwz2i35dns6y5" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/245/" data-id="cj9rvpsyi000dx12w7o4cr8l9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -409,7 +456,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9rv8txg0009wz2iiyaca3j3" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cj9rvpsyf000cx12wydm5kbuj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
@@ -451,7 +498,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9rv8txb0008wz2itks1rrgs" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cj9rvpsy50009x12wtsuazyq5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -495,7 +542,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9rv8tx80005wz2isnj9cpts" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cj9rvpsy00008x12wx16e4faa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -550,7 +597,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9rv8tx50004wz2ir07idoim" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cj9rvpsxv0005x12wq1go46sd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -603,49 +650,11 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9rv8tx20003wz2i9osbbxtz" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cj9rvpsxs0004x12wrftt548w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-239.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/239/" class="article-date">
-  <time datetime="2017-10-29T21:37:26.000Z" itemprop="datePublished">2017-10-29 21:37:26</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-
-  <h1 itemprop="name">
-    <a class="article-title" href="/posts/239/">てすと</a>
-  </h1>
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>てすてす。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cj9rv8twu0001wz2in3myrbja" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -671,6 +680,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/253/">Hexo の archives の表示順序を変える</a>
+          </li>
+        
+          <li>
             <a href="/posts/251/">Dockerでrails s</a>
           </li>
         
@@ -684,10 +697,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/245/">Hexo のサイドバーに travis の builds を表示した</a>
-          </li>
-        
-          <li>
-            <a href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
           </li>
         
       </ul>
