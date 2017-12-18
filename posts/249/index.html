@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="雑なアウトプット">
 <meta property="og:description" content="Heroku SSL EndpointからAutomated Certificate Managementへダウンタイムなしで移行したので、その記録。 Heroku SSL化を挟まないと、heroku certs:auto:enableしてからstatus: OKになるまでの間にダウンタイムが発生する。そのあたりの注意点は公式ドキュメントに書いてあった。  https://devcenter.he">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2017-11-09T02:53:12.868Z">
+<meta property="og:updated_time" content="2017-12-18T01:14:46.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Heroku SSL EndpointからAutomated Certificate Managementへ移行する">
 <meta name="twitter:description" content="Heroku SSL EndpointからAutomated Certificate Managementへダウンタイムなしで移行したので、その記録。 Heroku SSL化を挟まないと、heroku certs:auto:enableしてからstatus: OKになるまでの間にダウンタイムが発生する。そのあたりの注意点は公式ドキュメントに書いてあった。  https://devcenter.he">
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <section id="main"><article id="post-249.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/249/" class="article-date">
-  <time datetime="2017-11-01T15:33:02.000Z" itemprop="datePublished">2017-11-01 15:33:02</time>
+  <time datetime="2017-11-01T06:33:02.000Z" itemprop="datePublished">2017-11-01 06:33:02</time>
 </a>
 
   </div>
@@ -124,32 +124,32 @@ ga('send', 'pageview');
         <p>Heroku SSL EndpointからAutomated Certificate Managementへダウンタイムなしで移行したので、その記録。</p>
 <p>Heroku SSL化を挟まないと、<code>heroku certs:auto:enable</code>してから<code>status: OK</code>になるまでの間にダウンタイムが発生する。そのあたりの注意点は公式ドキュメントに書いてあった。</p>
 <blockquote>
-<p><a href="https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint" target="_blank" rel="external">https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint</a><br>Migrating from the SSL Endpoint addon to Automated Certificate Management requires a DNS change. However, you can use Heroku SSL (SNI) as an intermediate step to avoid downtime for your custom domain. Start by following these instructions to migrate from SSL Endpoint to Heroku SSL (SNI). Once that process is complete, you can enable ACM with no downtime as described above.</p>
+<p><a href="https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint</a><br>Migrating from the SSL Endpoint addon to Automated Certificate Management requires a DNS change. However, you can use Heroku SSL (SNI) as an intermediate step to avoid downtime for your custom domain. Start by following these instructions to migrate from SSL Endpoint to Heroku SSL (SNI). Once that process is complete, you can enable ACM with no downtime as described above.</p>
 </blockquote>
 <p>いちど、Heroku SSLへ移行してから、ACM(Automated Certificate Management)へ移行すればいい。</p>
 <p>Heroku SSLを使うには、<code>heroku certs:add</code>コマンドに<code>--type sni</code>オプションを付けて証明書を追加する。</p>
 <p>このとき、既存の証明書と同じものをアップロードしてオッケー。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">heroku certs:add example.com.crt example.com.key --type sni</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:add example.com.crt example.com.key --type sni</span><br></pre></td></tr></table></figure>
 <p>すると、こんな感じで2つの証明書が表示される。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">heroku certs -a pplog</div><div class="line">Name                Endpoint                  Common Name(s)            Expires               Trusted  Type</div><div class="line">──────────────────  ────────────────────────  ────────────────────────  ──────────</div><div class="line">gifu-1545           gifu-1545.herokussl.com   www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     Endpoint</div><div class="line">camarasaurus-91097  (Not applicable for SNI)  www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     SNI</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">heroku certs -a pplog</span><br><span class="line">Name                Endpoint                  Common Name(s)            Expires               Trusted  Type</span><br><span class="line">──────────────────  ────────────────────────  ────────────────────────  ──────────</span><br><span class="line">gifu-1545           gifu-1545.herokussl.com   www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     Endpoint</span><br><span class="line">camarasaurus-91097  (Not applicable for SNI)  www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     SNI</span><br></pre></td></tr></table></figure>
 <p>ドメインを確認すると</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">heroku domains -a pplog</div><div class="line">=== pplog Heroku Domain</div><div class="line">pplog.herokuapp.com</div><div class="line"></div><div class="line">=== pplog Custom Domains</div><div class="line">Domain Name    DNS Record Type  DNS Target</div><div class="line">─────────────  ───────────────  ───────────────────────────</div><div class="line">www.pplog.net  CNAME            www.pplog.net.herokudns.com</div><div class="line">pplog.net      ALIAS or ANAME   pplog.net.herokudns.com</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">heroku domains -a pplog</span><br><span class="line">=== pplog Heroku Domain</span><br><span class="line">pplog.herokuapp.com</span><br><span class="line"></span><br><span class="line">=== pplog Custom Domains</span><br><span class="line">Domain Name    DNS Record Type  DNS Target</span><br><span class="line">─────────────  ───────────────  ───────────────────────────</span><br><span class="line">www.pplog.net  CNAME            www.pplog.net.herokudns.com</span><br><span class="line">pplog.net      ALIAS or ANAME   pplog.net.herokudns.com</span><br></pre></td></tr></table></figure>
 <p><code>CNAME</code>と<code>ALIAS</code>に設定すべき項目が表示されるので、これらをDNSの設定に反映する。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dig CNAME www.pplog.net</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig CNAME www.pplog.net</span><br></pre></td></tr></table></figure>
 <p>TTLの設定に寄るけども、DNS反映されたら、<code>Heroku SSL Endpoint</code>のアドオンを削除する。（焦らなくてもいいので次の日にでも）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">heroku addons:destroy ssl -a pplog</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku addons:destroy ssl -a pplog</span><br></pre></td></tr></table></figure>
 <p><code>Automated Certificate Management</code>を有効にする。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">heroku certs:auto:enable -a pplog</div><div class="line">Enabling Automatic Certificate Management... done</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto:enable -a pplog</span><br><span class="line">Enabling Automatic Certificate Management... done</span><br></pre></td></tr></table></figure>
 <p>すぐに確認すると、<code>In Progress</code>になっている。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">heroku certs:auto -a pplog</div><div class="line">=== Automatic Certificate Management is enabled on pplog</div><div class="line"></div><div class="line">Domain         Status</div><div class="line">─────────────  ───────────</div><div class="line">www.pplog.net  In Progress</div><div class="line">pplog.net      In Progress</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto -a pplog</span><br><span class="line">=== Automatic Certificate Management is enabled on pplog</span><br><span class="line"></span><br><span class="line">Domain         Status</span><br><span class="line">─────────────  ───────────</span><br><span class="line">www.pplog.net  In Progress</span><br><span class="line">pplog.net      In Progress</span><br></pre></td></tr></table></figure>
 <p>しばらくすると、<code>OK</code>になる。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">heroku certs:auto -a pplog</div><div class="line">=== Automatic Certificate Management is enabled on pplog</div><div class="line"></div><div class="line">Certificate details:</div><div class="line">Common Name(s): pplog.net</div><div class="line">                www.pplog.net</div><div class="line">Expires At:     2018-01-30 04:51 UTC</div><div class="line">Issuer:         /C=US/O=Let&apos;s Encrypt/CN=Let&apos;s Encrypt Authority X3</div><div class="line">Starts At:      2017-11-01 04:51 UTC</div><div class="line">Subject:        /CN=pplog.net</div><div class="line">SSL certificate is verified by a root authority.</div><div class="line"></div><div class="line">Domain         Status</div><div class="line">─────────────  ──────</div><div class="line">www.pplog.net  OK</div><div class="line">pplog.net      OK</div></pre></td></tr></table></figure>
-<p>証明書の<code>Type</code>が<code>ACM</code>になっていれば完了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">heroku certs -a pplog</div><div class="line">Name                Common Name(s)            Expires               Trusted  Type</div><div class="line">──────────────────  ────────────────────────  ────────────────────  ───────  ────</div><div class="line">camarasaurus-91097  pplog.net, www.pplog.net  2018-01-30 04:51 UTC  True     ACM</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto -a pplog</span><br><span class="line">=== Automatic Certificate Management is enabled on pplog</span><br><span class="line"></span><br><span class="line">Certificate details:</span><br><span class="line">Common Name(s): pplog.net</span><br><span class="line">                www.pplog.net</span><br><span class="line">Expires At:     2018-01-30 04:51 UTC</span><br><span class="line">Issuer:         /C=US/O=Let&apos;s Encrypt/CN=Let&apos;s Encrypt Authority X3</span><br><span class="line">Starts At:      2017-11-01 04:51 UTC</span><br><span class="line">Subject:        /CN=pplog.net</span><br><span class="line">SSL certificate is verified by a root authority.</span><br><span class="line"></span><br><span class="line">Domain         Status</span><br><span class="line">─────────────  ──────</span><br><span class="line">www.pplog.net  OK</span><br><span class="line">pplog.net      OK</span><br></pre></td></tr></table></figure>
+<p>証明書の<code>Type</code>が<code>ACM</code>になっていれば完了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">heroku certs -a pplog</span><br><span class="line">Name                Common Name(s)            Expires               Trusted  Type</span><br><span class="line">──────────────────  ────────────────────────  ────────────────────  ───────  ────</span><br><span class="line">camarasaurus-91097  pplog.net, www.pplog.net  2018-01-30 04:51 UTC  True     ACM</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cj9rvpsyk000fx12wbze5hqzn" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cjbbiduh0000f8i2zwmewk4zv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,9 +168,9 @@ ga('send', 'pageview');
     </a>
   
   
-    <a href="/posts/250/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/251/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Dockerでrails new</div>
+      <div class="article-nav-title">Dockerでrails s</div>
     </a>
   
 </nav>
@@ -190,6 +190,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/262/">esaのslideをembedする</a>
+          </li>
+        
+          <li>
             <a href="/posts/253/">Hexo の archives の表示順序を変える</a>
           </li>
         
@@ -205,10 +209,6 @@ ga('send', 'pageview');
             <a href="/posts/249/">Heroku SSL EndpointからAutomated Certificate Managementへ移行する</a>
           </li>
         
-          <li>
-            <a href="/posts/245/">Hexo のサイドバーに travis の builds を表示した</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -219,7 +219,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
+      <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/esa/" style="font-size: 10px;">esa</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a>
     </div>
   </div>
 
