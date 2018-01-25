@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Unityで「もぐらたたきゲーム」を作ってみる1 | 雑なアウトプット</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Unityさっぱりわからん。 そもそもわからんわからないことを、たまたま近くにいたおじさんに質問して見た。（おじさん is @monry）  オブジェクトを置く、この世界をなんていうんだ レベルと言う   SceneにまたがったGameObjectの配置ってどうやんの  「Scene切替時でもGameObject等を破棄せずに保持しておく方法 - Qiita」を見つけましたよ。  DontDest">
+<meta name="keywords" content="unity">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unityで「もぐらたたきゲーム」を作ってみる1">
+<meta property="og:url" content="https://ppworks.github.io/posts/268/index.html">
+<meta property="og:site_name" content="雑なアウトプット">
+<meta property="og:description" content="Unityさっぱりわからん。 そもそもわからんわからないことを、たまたま近くにいたおじさんに質問して見た。（おじさん is @monry）  オブジェクトを置く、この世界をなんていうんだ レベルと言う   SceneにまたがったGameObjectの配置ってどうやんの  「Scene切替時でもGameObject等を破棄せずに保持しておく方法 - Qiita」を見つけましたよ。  DontDest">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png">
+<meta property="og:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+<meta property="og:updated_time" content="2018-01-25T07:30:00.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Unityで「もぐらたたきゲーム」を作ってみる1">
+<meta name="twitter:description" content="Unityさっぱりわからん。 そもそもわからんわからないことを、たまたま近くにいたおじさんに質問して見た。（おじさん is @monry）  オブジェクトを置く、この世界をなんていうんだ レベルと言う   SceneにまたがったGameObjectの配置ってどうやんの  「Scene切替時でもGameObject等を破棄せずに保持しておく方法 - Qiita」を見つけましたよ。  DontDest">
+<meta name="twitter:image" content="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-52654728-4', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+  <script type="text/javascript" src="https://s.hatena.ne.jp/js/HatenaStar.js"></script>
+  <script type="text/javascript">
+    Hatena.Star.Token = 'fc701925dcee0a5423226786dd300651d572ca5e';
+    Hatena.Star.SiteConfig = {
+      entryNodes: {
+        'article.article': [
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: 'header.article-header h1'
+          },
+          {
+            uri: 'a.article-title',
+            title: 'a.article-title',
+            container: '.article-footer'
+          }
+        ]
+      }
+    };
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">雑なアウトプット</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/posts">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-268.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/268/" class="article-date">
+  <time datetime="2018-01-25T06:54:02.000Z" itemprop="datePublished">2018-01-25 06:54:02</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/268/">Unityで「もぐらたたきゲーム」を作ってみる1</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Unityさっぱりわからん。</p>
+<h1 id="そもそもわからん"><a href="#そもそもわからん" class="headerlink" title="そもそもわからん"></a>そもそもわからん</h1><p>わからないことを、たまたま近くにいたおじさんに質問して見た。（おじさん is <a href="https://twitter.com/monry" target="_blank" rel="noopener">@monry</a>）</p>
+<ul>
+<li>オブジェクトを置く、この世界をなんていうんだ<ul>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: ">レベルと言う</li>
+</ul>
+</li>
+<li>SceneにまたがったGameObjectの配置ってどうやんの<ul>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "> 「<a href="https://qiita.com/srtkmsw/items/bf6a33d6bb2987c74936" target="_blank" rel="noopener">Scene切替時でもGameObject等を破棄せずに保持しておく方法 - Qiita</a>」を見つけましたよ。</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: "> <code>DontDestroyOnLoad</code>でやるのはありだけど、専用シーンが出来上がって管理しづらい。</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: "> うちのプロジェクトでは<a href="https://docs.unity3d.com/ScriptReference/SceneManagement.SceneManager.LoadScene.html" target="_blank" rel="noopener">SceneManager.LoadSchene</a>の第二引数で<code>LoadSceneMode.Additive</code>を渡す作戦を使っている。Sceneが合成されるイメージ。いわゆるモーダル表示みたいなことをしたいときにはこれ！</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "> <strong>ところで、Sceneごとにカメラが置いてあるけど、合成された時はどうすんの？</strong></li>
+</ul>
+</li>
+<li>2Dで、<code>Sprite</code>のスケール設定は、<code>Sprite</code>の設定にある<code>Pixels Per Unit</code>と<code>GameObject</code>の<code>Transform</code>の<code>Scale</code>でやるのどっちがいいの？<ul>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: "> Scaleは階層構造の配下のGameObjectにも影響するから避けたい。</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: "> そもそも、<code>2D</code>は、<code>GUI</code>で構築しちゃうと言う手も</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "> な、なんだってー！！！その発想はなかったでござるよ。にんにん。</li>
+</ul>
+</li>
+<li>カメラの画角計算がわからん。カメラに写る範囲にぴったり置きたい。たとえば、最初から置いてあるMain Cameraをz: -10の位置においたとき画面に描写される範囲の計算方法は？<ul>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "><a href="https://docs.unity3d.com/2017.1/Documentation/Manual/class-Camera.html" target="_blank" rel="noopener">Unity - Manual: Camera</a>からリンクされている<a href="https://docs.unity3d.com/ScriptReference/Camera-orthographicSize.html" target="_blank" rel="noopener">Unity - Scripting API: Camera.orthographicSize</a>に書いてあった。<code>Camera&#39;s half-size when in orthographic mode.</code>な。</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "><code>orthographic</code>モードにしている際の<code>size</code>に縦方向の半分に収める<code>unit</code>数を入れてやればいい。</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "> 例えば、<code>16:9</code>の画面のカメラにピッタリ<code>16unit x 9unit</code>を写したければ、<code>4.5</code>と入力する。</li>
+</ul>
+</li>
+<li>Build Setting<ul>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1745/image/f90ad20e129cc4a88d16841bdacf8eff.png" style="width: 20px; height: 20px; border-radius: 20px;" alt="ppworks said: "> 追加したsceneしか使えない？</li>
+<li><img src="https://img.esa.io/uploads/production/custom_emojis/4729/1744/image/e73ee6f09ca2ecb4af94ceafe52af24e.jpg" style="width: 20px; height: 20px; border-radius: 20px;" alt="monry said: "> そうそう。プロジェクトに含まれるすべてのものがビルド対象というわけではない。ここで指定したシーンに含まれるものがビルド対象となるので、気をつけて。</li>
+</ul>
+</li>
+</ul>
+<p>ほう。<a href="https://twitter.com/monry" target="_blank" rel="noopener">@monry</a>便利。</p>
+<h1 id="設計してみる"><a href="#設計してみる" class="headerlink" title="設計してみる"></a>設計してみる</h1><ul>
+<li>レベル上に登場するGameObject<ul>
+<li>背景などのハリボテ<ul>
+<li>各Sceneを通じて、最初に用意したらとっておきたい</li>
+</ul>
+</li>
+<li>Prefab<ul>
+<li>もぐら<ul>
+<li>穴からもぐらが出てくるアニメーションを持つ</li>
+<li>3種類ぐらいいる(猫、おじさん、もんりぃ）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>シーン<ul>
+<li>トップ<ul>
+<li>処理<ul>
+<li>ワールドの準備</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>ゲーム開始ボタン</li>
+<li>レコード表示ボタン</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>ゲーム<ul>
+<li>処理<ul>
+<li>ゲーム開始</li>
+<li>ユーザーの操作イベントを受付開始</li>
+<li>もぐらをランダムに生成する</li>
+<li>タイマーのセット</li>
+<li>スコアの記録</li>
+<li>終了イベントを検知して<ul>
+<li>レコードを記録</li>
+<li>ゲームを終了し結果へ移動<ul>
+<li>UI</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>残り時間表示</li>
+<li>スコア表示</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>結果<ul>
+<li>UI<ul>
+<li>得点の表示</li>
+<li>タイトルへ戻るボタン</li>
+<li>再度ゲーム開始ボタン</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>レコード<ul>
+<li>処理<ul>
+<li>過去のレコードを表示</li>
+</ul>
+</li>
+<li>UI<ul>
+<li>レコード表示リスト</li>
+<li>トップへ戻るボタン</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><code>2D</code>ゲームなので、<code>GUI</code>ですべて対応できる予感もするけど、今回はあえてハリボテの<code>Sprite</code>を配置して作ってみようかな。</p>
+<h1 id="ソース"><a href="#ソース" class="headerlink" title="ソース"></a>ソース</h1><h2 id="MainSceneController-cs"><a href="#MainSceneController-cs" class="headerlink" title="MainSceneController.cs"></a>MainSceneController.cs</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line"></span><br><span class="line">public class MainSceneController : MonoBehaviour &#123;</span><br><span class="line"></span><br><span class="line">	void Start () &#123;</span><br><span class="line">		Debug.Log (&quot;Hi, I&apos;m MainScene!!!&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	void Update () &#123;</span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="TitleSceneController"><a href="#TitleSceneController" class="headerlink" title="TitleSceneController"></a>TitleSceneController</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">using System.Collections;</span><br><span class="line">using System.Collections.Generic;</span><br><span class="line">using UnityEngine;</span><br><span class="line">using UnityEngine.UI;</span><br><span class="line">using UnityEngine.SceneManagement;</span><br><span class="line"></span><br><span class="line">public class TitleSceneController : MonoBehaviour &#123;</span><br><span class="line">	// https://qiita.com/momomo/items/f8c16004123f38e86fc0 を参考に変更する！</span><br><span class="line">	public Button startButton;</span><br><span class="line">	public GameObject background;</span><br><span class="line"></span><br><span class="line">	void Start () &#123;</span><br><span class="line">		Button button = this.startButton.GetComponent&lt;Button&gt;();</span><br><span class="line">		button.onClick.AddListener(ClickStartButton);</span><br><span class="line"></span><br><span class="line">		DontDestroyOnLoad (this.background.transform.gameObject);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	void Update () &#123;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	void ClickStartButton() &#123;</span><br><span class="line">		Debug.Log(&quot;You have clicked the button!&quot;);</span><br><span class="line">		SceneManager.LoadScene (&quot;scenes/MainScene&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>今回は、Unityの概念の謎を調べたり試行錯誤して、設計をしただけで終わってしまった。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjcu6jb1p000q6y2tmd1m4eyh" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/posts/244/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Seed FuをPostgreSQL 10 対応する
+        
+      </div>
+    </a>
+  
+  
+    <a href="/posts/239/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">てすと</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/posts/268/">Unityで「もぐらたたきゲーム」を作ってみる1</a>
+          </li>
+        
+          <li>
+            <a href="/posts/262/">esaのslideをembedする</a>
+          </li>
+        
+          <li>
+            <a href="/posts/253/">Hexo の archives の表示順序を変える</a>
+          </li>
+        
+          <li>
+            <a href="/posts/251/">Dockerでrails s</a>
+          </li>
+        
+          <li>
+            <a href="/posts/250/">Dockerでrails new</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/docker/" style="font-size: 15px;">docker</a> <a href="/tags/esa/" style="font-size: 10px;">esa</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a> <a href="/tags/unity/" style="font-size: 10px;">unity</a>
+    </div>
+  </div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">Builds</h3>
+  <div class="widget">
+    <a href="https://travis-ci.org/ppworks/ppworks.github.io/builds"><img class="travis-badge" src="https://travis-ci.org/ppworks/ppworks.github.io.svg?branch=esa" /></a>
+    <ul id="js-travis-ci-builds" class="travis-list">
+    </ul>
+  </div>
+</div>
+
+  
+    <div class="widget-wrap">
+  <h3 class="widget-title">Links</h3>
+  <div class="widget">
+    <ul>
+      <li><a href="https://taea.github.io">taea.github.io</a></li>
+    </ul>
+  </div>
+</div>
+
+  
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 ppworks<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/posts" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
