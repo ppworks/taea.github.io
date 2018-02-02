@@ -3,20 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo の archives の表示順序を変える | 雑なアウトプット</title>
+  <title>Unityで「もぐらたたきゲーム」を作ってみる2 | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="#270:  blog/uGUIについて学んだ 結果、2DゲームはuGUIで作った方が楽ぽいので、作り直しはじめた。  もぐらたたきのイラスト | かわいいフリー素材集 いらすとや http://www.irasutoya.com/2015/03/blog-post_6.htmlをゲーム化する作戦でやってみている。 まずはパーツを分けるためにPhotoShopをがんばった  https://t.c">
+<meta name="keywords" content="unity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo の archives の表示順序を変える">
-<meta property="og:url" content="https://ppworks.github.io/posts/253/index.html">
+<meta property="og:title" content="Unityで「もぐらたたきゲーム」を作ってみる2">
+<meta property="og:url" content="https://ppworks.github.io/posts/272/index.html">
 <meta property="og:site_name" content="雑なアウトプット">
-<meta property="og:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
+<meta property="og:description" content="#270:  blog/uGUIについて学んだ 結果、2DゲームはuGUIで作った方が楽ぽいので、作り直しはじめた。  もぐらたたきのイラスト | かわいいフリー素材集 いらすとや http://www.irasutoya.com/2015/03/blog-post_6.htmlをゲーム化する作戦でやってみている。 まずはパーツを分けるためにPhotoShopをがんばった  https://t.c">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-02-02T06:48:55.816Z">
+<meta property="og:image" content="https://img.esa.io/uploads/production/attachments/3/2018/02/02/11/47dd7342-24fc-4f93-a5ee-1a0a8bd5cb2c.png">
+<meta property="og:updated_time" content="2018-02-02T06:48:55.820Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo の archives の表示順序を変える">
-<meta name="twitter:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
+<meta name="twitter:title" content="Unityで「もぐらたたきゲーム」を作ってみる2">
+<meta name="twitter:description" content="#270:  blog/uGUIについて学んだ 結果、2DゲームはuGUIで作った方が楽ぽいので、作り直しはじめた。  もぐらたたきのイラスト | かわいいフリー素材集 いらすとや http://www.irasutoya.com/2015/03/blog-post_6.htmlをゲーム化する作戦でやってみている。 まずはパーツを分けるためにPhotoShopをがんばった  https://t.c">
+<meta name="twitter:image" content="https://img.esa.io/uploads/production/attachments/3/2018/02/02/11/47dd7342-24fc-4f93-a5ee-1a0a8bd5cb2c.png">
   
     <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
   
@@ -100,10 +102,10 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-253.html" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-272.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/posts/253/" class="article-date">
-  <time datetime="2017-11-09T02:52:38.000Z" itemprop="datePublished">2017-11-09 02:52:38</time>
+    <a href="/posts/272/" class="article-date">
+  <time datetime="2018-02-02T06:48:18.000Z" itemprop="datePublished">2018-02-02 06:48:18</time>
 </a>
 
   </div>
@@ -115,7 +117,7 @@ ga('send', 'pageview');
         
 
   <h1 itemprop="name">
-    <a class="article-title" href="/posts/253/">Hexo の archives の表示順序を変える</a>
+    <a class="article-title" href="/posts/272/">Unityで「もぐらたたきゲーム」を作ってみる2</a>
   </h1>
 
 
@@ -123,22 +125,50 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/hexojs/hexo-generator-index" target="_blank" rel="noopener">hexo-generator-index</a>にはある<code>order_by</code>オプションが<a href="https://github.com/hexojs/hexo-generator-archive" target="_blank" rel="noopener">hexo-generator-archive</a>には、なかったので足した。</p>
-<blockquote>
-<p><a href="https://github.com/hexojs/hexo-generator-archive/pull/9" target="_blank" rel="noopener">Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive</a></p>
-</blockquote>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   var config = this.config;</span><br><span class="line">   var archiveDir = config.archive_dir;</span><br><span class="line">   var paginationDir = config.pagination_dir || 'page';</span><br><span class="line"><span class="deletion">-  var allPosts = locals.posts.sort('-date');</span></span><br><span class="line"><span class="addition">+  var allPosts = locals.posts.sort(config.archive_generator.order_by || '-date');</span></span><br><span class="line">   var perPage = config.archive_generator.per_page;</span><br><span class="line">   var result = [];</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/hexojs/hexo-generator-archive/releases/tag/0.1.5" target="_blank" rel="noopener"><strong>0.1.5</strong></a>以降を使うと<code>order_by</code>オプションが使えるようになるので、<a href="https://github.com/ppworks/ppworks.github.io/commit/d1dcdbd708e327953acda9c1a474b37e5ef78d6a" target="_blank" rel="noopener">こんな感じで</a><code>_config.yml</code>に<code>order_by</code>を追加する。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/_config.yml b/_config.yml</span><br><span class="line">index 9c306f1..232f072 100644</span><br><span class="line"><span class="comment">--- a/_config.yml</span></span><br><span class="line"><span class="comment">+++ b/_config.yml</span></span><br><span class="line">@@ -53,6 +53,9 @@ index_generator:</span><br><span class="line">   per_page: 10</span><br><span class="line">   order_by: -number</span><br><span class="line"></span><br><span class="line"><span class="addition">+archive_generator:</span></span><br><span class="line"><span class="addition">+  order_by: -number</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"> # Category &amp; Tag</span><br><span class="line"> default_category: uncategorized</span><br><span class="line"> category_map:</span><br></pre></td></tr></table></figure>
-<p>このhexoはesaと連携しているので、<code>index</code>と同じように<code>number</code>の降順にした。</p>
+        <p><a href="/posts/270">#270:  blog/uGUIについて学んだ</a> 結果、2Dゲームは<code>uGUI</code>で作った方が楽ぽいので、作り直しはじめた。</p>
+<ul>
+<li>もぐらたたきのイラスト | かわいいフリー素材集 いらすとや <a href="http://www.irasutoya.com/2015/03/blog-post_6.html" target="_blank" rel="noopener">http://www.irasutoya.com/2015/03/blog-post_6.html</a><br>をゲーム化する作戦でやってみている。<ul>
+<li>まずはパーツを分けるためにPhotoShopをがんばった <img src="https://img.esa.io/uploads/production/attachments/3/2018/02/02/11/47dd7342-24fc-4f93-a5ee-1a0a8bd5cb2c.png" alt="image.png (32.0 kB)"></li>
+<li><blockquote class="twitter-tweet" data-lang="en"><p lang="ja" dir="ltr"><a href="https://t.co/xLOP6qBiVI" target="_blank" rel="noopener">https://t.co/xLOP6qBiVI</a> をみてアニメーション作る方法がわかったぽい。なるほど。 <a href="https://t.co/STiZW5OSY3" target="_blank" rel="noopener">pic.twitter.com/STiZW5OSY3</a></p>&mdash; Koshikawa Naoto (@ppworks) <a href="https://twitter.com/ppworks/status/959304011869405185?ref_src=twsrc%5Etfw" target="_blank" rel="noopener">February 2, 2018</a></blockquote><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="学び"><a href="#学び" class="headerlink" title="学び"></a>学び</h2><ul>
+<li>そもそもどうやってアニメーション作るんだっけ<ul>
+<li><a href="http://schoo.jp/class/4560/room" target="_blank" rel="noopener">UnityのuGUIで作る2Dゲーム -応用編/ゲームをリッチにするテクニック- - Schoo（スクー）</a>を復習した</li>
+</ul>
+</li>
+<li>草をいっぱい敷き詰めたい<ul>
+<li><a href="https://qiita.com/murapong/items/739db2e7b2efa98d5640" target="_blank" rel="noopener">UnityのuGUIで画像をタイリング表示するには - Qiita</a></li>
+</ul>
+</li>
+<li>もぐらをマスクして、ニュッと出したい<ul>
+<li><a href="http://kan-kikuchi.hatenablog.com/entry/Mask" target="_blank" rel="noopener">SpriteやImageでMaskを使う【Unity】【uGUI】 - (:3[kanのメモ帳]</a></li>
+</ul>
+</li>
+<li>もぐらをなんかいっぱい出したい<ul>
+<li><a href="https://www.amazon.co.jp/dp/4797393521" target="_blank" rel="noopener">Unityの教科書 Unity 2017完全対応版 2D&amp;3Dスマートフォンゲーム入門講座 (Entertainment&amp;IDEA) | 北村 愛実 |本 | 通販 | Amazon</a>のP.200あたりからを復習</li>
+</ul>
+</li>
+</ul>
+<h2 id="わからん"><a href="#わからん" class="headerlink" title="わからん"></a>わからん</h2><ul>
+<li>Animatiorのtriggerの発動のさせ方</li>
+<li>重ならないようにいい感じにprefabを配置する方法<ul>
+<li>そりゃまあ頑張ればできるのは分かる</li>
+</ul>
+</li>
+</ul>
+<h2 id="感想"><a href="#感想" class="headerlink" title="感想"></a>感想</h2><p>ほとんど、フォトショさわってた。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjd5kkgqs000m8b2bvoid2tus" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjd5kkgr5000v8b2b4pnt4ozj" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
 
     </footer>
   </div>
@@ -146,19 +176,10 @@ ga('send', 'pageview');
     
 <nav id="article-nav">
   
-    <a href="/posts/251/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Dockerでrails s
-        
-      </div>
-    </a>
   
-  
-    <a href="/posts/262/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/268/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">esaのslideをembedする</div>
+      <div class="article-nav-title">Unityで「もぐらたたきゲーム」を作ってみる1</div>
     </a>
   
 </nav>
