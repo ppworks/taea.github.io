@@ -83,9 +83,9 @@ ga('send', 'pageview');
       <nav id="sub-nav">
         <a id="nav-github-link" class="nav-icon" href="https://github.com/ppworks/ppworks.github.io" title="GitHub"></a>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://ppworks.github.io"></form>
@@ -96,6 +96,69 @@ ga('send', 'pageview');
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-244.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/244/" class="article-date">
+  <time datetime="2017-11-09T02:28:05.000Z" itemprop="datePublished">2017-11-09 02:28:05</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/244/">Seed FuをPostgreSQL 10 対応する</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>当面は、<a href="https://github.com/ppworks/seed-fu/tree/support-postgresql10" target="_blank" rel="noopener">https://github.com/ppworks/seed-fu/tree/support-postgresql10</a> を使う。</p>
+<blockquote>
+<p><a href="https://www.postgresql.org/docs/10/static/release-10.html" target="_blank" rel="noopener">https://www.postgresql.org/docs/10/static/release-10.html</a><br>Move sequences’ metadata fields into a new pg_sequence system catalog (Peter Eisentraut)</p>
+</blockquote>
+<blockquote>
+<p>A sequence relation now stores only the fields that can be modified by nextval(), that is last_value, log_cnt, and is_called. Other sequence properties, such as the starting value and increment, are kept in a corresponding row of the <strong>pg_sequence</strong> catalog. ALTER SEQUENCE updates are now fully transactional, implying that the sequence is locked until commit. The nextval() and setval() functions remain nontransactional.</p>
+</blockquote>
+<blockquote>
+<p>The main incompatibility introduced by this change is that selecting from a sequence relation now returns only the three fields named above. To obtain the sequence’s other properties, applications must look into <strong>pg_sequence</strong>. The new system view pg_sequences can also be used for this purpose; it provides column names that are more compatible with existing code.</p>
+</blockquote>
+<blockquote>
+<p>The output of psql’s \d command for a sequence has been redesigned, too.</p>
+</blockquote>
+<p>とのことで、いままで <code>PostgreSQL</code> の <code>ID Sequence</code>を設定していた、こういうコードが落ちるようになった。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT increment_by FROM #&#123;sequence&#125;), (SELECT min_value FROM #&#123;sequence&#125;)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;), false)</span></span><br></pre></td></tr></table></figure>
+<p>エラーはこんな感じ</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Failure/Error: SeedFu.seed</span><br><span class="line"></span><br><span class="line">ActiveRecord::StatementInvalid:</span><br><span class="line">  PG::UndefinedColumn: ERROR:  column &quot;increment_by&quot; does not exist</span><br></pre></td></tr></table></figure>
+<p>以下のように、新たに導入された<code>pg_sequence</code>カタログを参照するように<a href="https://github.com/mbleigh/seed-fu/pull/121" target="_blank" rel="noopener">変更した</a>。</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT setval(<span class="string">'<span class="subst">#&#123;sequence&#125;</span>'</span>, (SELECT GREATEST(MAX(<span class="comment">#&#123;quoted_id&#125;)+(SELECT seqincrement FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass), (SELECT seqmin FROM pg_sequence WHERE seqrelid = '#&#123;sequence&#125;'::regclass)) FROM #&#123;<span class="doctag">@model</span>_class.quoted_table_name&#125;),</span></span><br></pre></td></tr></table></figure>
+<p>ちなみにRailsの類似処理は既にマージされていた。</p>
+<blockquote>
+<p><a href="https://github.com/rails/rails/pull/28864" target="_blank" rel="noopener">https://github.com/rails/rails/pull/28864</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/244/" data-id="cjf9404q5000d8i2kpprytctk" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/rails/">rails</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-243.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -127,7 +190,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/243/" data-id="cjf93ui85000c7p2xmn4khi4q" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/243/" data-id="cjf9404q0000a8i2kujgfw6pv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -172,7 +235,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/242/" data-id="cjf93ui7p00087p2x24kcrwbx" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/242/" data-id="cjf9404ps00098i2koa5yxzom" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -228,7 +291,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/241/" data-id="cjf93ui7i00057p2xgasambla" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/241/" data-id="cjf9404pk00068i2kfduxovye" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -282,7 +345,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/240/" data-id="cjf93ui8200097p2x9avcybre" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/240/" data-id="cjf9404pg00058i2ksvkzz7qg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -323,7 +386,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/239/" data-id="cjf93ui7d00047p2xhymdvkad" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/239/" data-id="cjf9404oy00048i2kip53xycd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -367,7 +430,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/237/" data-id="cjf93ui7500037p2xww7hyfbw" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/237/" data-id="cjf9404og00028i2k8ev7m53w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
@@ -439,7 +502,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/233/" data-id="cjf93ui6h00007p2x6g96p3bo" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/233/" data-id="cjf9404o300018i2kv8tkeomc" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li></ul>
@@ -509,7 +572,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/132/" data-id="cjf93ui6s00017p2x1hfxmmwk" class="article-share-link">Partager</a>
+      <a data-url="https://ppworks.github.io/posts/132/" data-id="cjf9404np00008i2k16tdz2to" class="article-share-link">Share</a>
       
       
     </footer>
@@ -523,7 +586,7 @@ ga('send', 'pageview');
 
 
   <nav id="page-nav">
-    <a class="extend prev" rel="prev" href="/">&laquo;Précédent</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo;Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 </section>
@@ -532,9 +595,13 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/posts/279/">今までのリモートワークで起きた問題を整理してみる</a>
+          </li>
         
           <li>
             <a href="/posts/272/">Unityで「もぐらたたきゲーム」を作ってみる2</a>
@@ -552,10 +619,6 @@ ga('send', 'pageview');
             <a href="/posts/262/">esaのslideをembedする</a>
           </li>
         
-          <li>
-            <a href="/posts/253/">Hexo の archives の表示順序を変える</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -564,7 +627,7 @@ ga('send', 'pageview');
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/docker/" style="font-size: 13.33px;">docker</a> <a href="/tags/esa/" style="font-size: 10px;">esa</a> <a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/rails/" style="font-size: 10px;">rails</a> <a href="/tags/unity/" style="font-size: 16.67px;">unity</a>
     </div>
@@ -600,7 +663,7 @@ ga('send', 'pageview');
   <div class="outer">
     <div id="footer-info" class="inner">
       &copy; 2018 ppworks<br>
-      Propulsé by <a href="http://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>
