@@ -97,6 +97,51 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-287.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/287/" class="article-date">
+  <time datetime="2018-04-18T04:51:22.000Z" itemprop="datePublished">2018-04-18 04:51:22</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/287/">Railsのcookies serializerの設定変更時には heroku の preboot の設定を確認しておくこと</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rails.application.config.action_dispatch.cookies_serializer = :marshal</span><br></pre></td></tr></table></figure>
+<p>から</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Rails.application.config.action_dispatch.cookies_serializer = :hybrid</span><br></pre></td></tr></table></figure>
+<p>にして、移行は完璧！と思っていても</p>
+<p><a href="https://devcenter.heroku.com/articles/preboot" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/preboot</a></p>
+<p>が<code>enabled</code>のままだと、大変なことになるから気をつけろ！</p>
+<p>基本的に新旧バージョンのサーバインスタンスが共存し得る場合に困るような更新がある場合は<code>disabled</code>にしておかないと<code>rollback</code>しても<code>deploy</code>しなおしても、状況がつかめず悪化するだけになるので気をつけねばならない。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjg4mfn7c000z8l2zmqtpeyb7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-279.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/279/" class="article-date">
@@ -154,7 +199,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjf947qk1000x8g2qazs02q26" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjg4mfn74000x8l2zg8yk253j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +277,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjf947qjx000v8g2qwtcrrhel" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjg4mfn6t000v8l2z3banvsj3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -304,7 +349,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjf947qjq000t8g2qzpzid0i3" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjg4mfn6n000t8l2zwgysmv6t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -455,7 +500,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjf947qji000q8g2qhni1x1he" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjg4mfn6e000q8l2zxmxl6p34" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -500,7 +545,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjf947qje000o8g2qv2rr4fqp" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjg4mfn64000o8l2zkh2qial8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/esa/">esa</a></li></ul>
@@ -548,7 +593,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjf947qj9000m8g2qvuxpq4j2" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjg4mfn5v000m8l2z9agffzie" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -620,7 +665,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjf947qj4000k8g2qwr4ma0ms" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjg4mfn5o000k8l2z6rhd5356" class="article-share-link">Share</a>
       
       
     </footer>
@@ -667,7 +712,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjf947qiv000h8g2qfuc64vyl" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjg4mfn5e000h8l2z5la7njj3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -729,103 +774,9 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cjf947qio000f8g2qiefyo3jm" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/249/" data-id="cjg4mfn58000f8l2z5l0lxpnu" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-245.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/245/" class="article-date">
-  <time datetime="2017-11-09T01:10:53.000Z" itemprop="datePublished">2017-11-09 01:10:53</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-
-    
-      <header class="article-header">
-        
-
-  <h1 itemprop="name">
-    <a class="article-title" href="/posts/245/">Hexo のサイドバーに travis の builds を表示した</a>
-  </h1>
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Copied from: <a href="/posts/243">blog/Hexo と esa 連携するときの travis の設定</a></p>
-<p>travisのbuildろぐをサイドバーに出してみたくて出してみた。フィードは、こんな感じでアクセスできるので<a href="https://github.com/ppworks/ppworks.github.io/commit/fbf303984bde502b0329df34951e524052feb26c" target="_blank" rel="noopener">JavaScriptで持ってきてパース</a>する。だいぶ雑なコードになったので、あとでもうちょいちゃんとするほうがいいかも。</p>
-<blockquote>
-<p><a href="https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom" target="_blank" rel="noopener">https://api.travis-ci.org/repos/ppworks/ppworks.github.io/builds.atom</a></p>
-</blockquote>
-<p><img src="https://img.esa.io/uploads/production/attachments/4729/2017/10/31/11/f854941d-2b7e-4ae3-bc36-9fe51bfa6bb5.png" width="300"></p>
-<p>それっぽく表示するために、各ステータスのtravis-ci上での色を調べてた。</p>
-<table>
-<thead>
-<tr>
-<th>status</th>
-<th>color</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>received</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
-</tr>
-<tr>
-<td>queued</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
-</tr>
-<tr>
-<td>created</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
-</tr>
-<tr>
-<td>booting</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
-</tr>
-<tr>
-<td>started</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #edde3f; color: #edde3f; background-color: #fff; padding: 3px 6px 3px 6px;">#edde3f</span></td>
-</tr>
-<tr>
-<td>canceled</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #9d9d9d; color: #9d9d9d; background-color: #fff; padding: 3px 6px 3px 6px;">#9d9d9d</span></td>
-</tr>
-<tr>
-<td>passed</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #39aa56; color: #39aa56; background-color: #fff; padding: 3px 6px 3px 6px;">#39aa56</span></td>
-</tr>
-<tr>
-<td>errored</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
-</tr>
-<tr>
-<td>failed</td>
-<td><span style="border-left-style: solid; border-left-width: 10px; border-color: #db4545; color: #db4545; background-color: #fff; padding: 3px 6px 3px 6px;">#db4545</span></td>
-</tr>
-</tbody>
-</table>
-<p>ステータスの一覧がtravis-ciのドキュメントで探し出せず、CSSのスタイルから調べることになった。各ステータスの正しい順序は未検証。できれば各ステータスの意味も正確に知りたい気持ちもある。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/245/" data-id="cjf947qig000d8g2qytu7yhmf" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
     </footer>
   </div>
   
@@ -851,6 +802,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/287/">Railsのcookies serializerの設定変更時には heroku の preboot の設定を確認しておくこと</a>
+          </li>
+        
+          <li>
             <a href="/posts/279/">今までのリモートワークで起きた問題を整理してみる</a>
           </li>
         
@@ -864,10 +819,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/268/">Unityで「もぐらたたきゲーム」を作ってみる1</a>
-          </li>
-        
-          <li>
-            <a href="/posts/262/">esaのslideをembedする</a>
           </li>
         
       </ul>
