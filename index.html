@@ -97,6 +97,45 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-324.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/324/" class="article-date">
+  <time datetime="2018-06-29T16:13:18.000Z" itemprop="datePublished">2018-06-29 16:13:18</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/324/">Selenium::DriverのChrome のオプションの渡し方が変わってた</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj06id8d0011oi2oythjt187" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-287.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/287/" class="article-date">
@@ -131,7 +170,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjg4mfn7c000z8l2zmqtpeyb7" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjj06id8b000zoi2oegluqa0s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -199,7 +238,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjg4mfn74000x8l2zg8yk253j" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjj06id88000xoi2osowiq66g" class="article-share-link">Share</a>
       
       
     </footer>
@@ -277,7 +316,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjg4mfn6t000v8l2z3banvsj3" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjj06id84000voi2ojy72hdkr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -349,7 +388,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjg4mfn6n000t8l2zwgysmv6t" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjj06id82000toi2o0gip0lj8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -500,7 +539,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjg4mfn6e000q8l2zxmxl6p34" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjj06id7z000qoi2oyy190htr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -545,7 +584,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjg4mfn64000o8l2zkh2qial8" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjj06id7w000ooi2of74tfp16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/esa/">esa</a></li></ul>
@@ -593,7 +632,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjg4mfn5v000m8l2z9agffzie" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjj06id7q000moi2o6g7f43mx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -665,7 +704,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjg4mfn5o000k8l2z6rhd5356" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjj06id7n000koi2o6b0u3909" class="article-share-link">Share</a>
       
       
     </footer>
@@ -712,69 +751,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjg4mfn5e000h8l2z5la7njj3" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-249.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/249/" class="article-date">
-  <time datetime="2017-11-01T06:33:02.000Z" itemprop="datePublished">2017-11-01 06:33:02</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-
-    
-      <header class="article-header">
-        
-
-  <h1 itemprop="name">
-    <a class="article-title" href="/posts/249/">Heroku SSL EndpointからAutomated Certificate Managementへ移行する</a>
-  </h1>
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Heroku SSL EndpointからAutomated Certificate Managementへダウンタイムなしで移行したので、その記録。</p>
-<p>Heroku SSL化を挟まないと、<code>heroku certs:auto:enable</code>してから<code>status: OK</code>になるまでの間にダウンタイムが発生する。そのあたりの注意点は公式ドキュメントに書いてあった。</p>
-<blockquote>
-<p><a href="https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint" target="_blank" rel="noopener">https://devcenter.heroku.com/articles/automated-certificate-management#migrating-from-ssl-endpoint</a><br>Migrating from the SSL Endpoint addon to Automated Certificate Management requires a DNS change. However, you can use Heroku SSL (SNI) as an intermediate step to avoid downtime for your custom domain. Start by following these instructions to migrate from SSL Endpoint to Heroku SSL (SNI). Once that process is complete, you can enable ACM with no downtime as described above.</p>
-</blockquote>
-<p>いちど、Heroku SSLへ移行してから、ACM(Automated Certificate Management)へ移行すればいい。</p>
-<p>Heroku SSLを使うには、<code>heroku certs:add</code>コマンドに<code>--type sni</code>オプションを付けて証明書を追加する。</p>
-<p>このとき、既存の証明書と同じものをアップロードしてオッケー。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:add example.com.crt example.com.key --type sni</span><br></pre></td></tr></table></figure>
-<p>すると、こんな感じで2つの証明書が表示される。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">heroku certs -a pplog</span><br><span class="line">Name                Endpoint                  Common Name(s)            Expires               Trusted  Type</span><br><span class="line">──────────────────  ────────────────────────  ────────────────────────  ──────────</span><br><span class="line">gifu-1545           gifu-1545.herokussl.com   www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     Endpoint</span><br><span class="line">camarasaurus-91097  (Not applicable for SNI)  www.pplog.net, pplog.net  2018-01-30 03:10 UTC  True     SNI</span><br></pre></td></tr></table></figure>
-<p>ドメインを確認すると</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">heroku domains -a pplog</span><br><span class="line">=== pplog Heroku Domain</span><br><span class="line">pplog.herokuapp.com</span><br><span class="line"></span><br><span class="line">=== pplog Custom Domains</span><br><span class="line">Domain Name    DNS Record Type  DNS Target</span><br><span class="line">─────────────  ───────────────  ───────────────────────────</span><br><span class="line">www.pplog.net  CNAME            www.pplog.net.herokudns.com</span><br><span class="line">pplog.net      ALIAS or ANAME   pplog.net.herokudns.com</span><br></pre></td></tr></table></figure>
-<p><code>CNAME</code>と<code>ALIAS</code>に設定すべき項目が表示されるので、これらをDNSの設定に反映する。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dig CNAME www.pplog.net</span><br></pre></td></tr></table></figure>
-<p>TTLの設定に寄るけども、DNS反映されたら、<code>Heroku SSL Endpoint</code>のアドオンを削除する。（焦らなくてもいいので次の日にでも）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">heroku addons:destroy ssl -a pplog</span><br></pre></td></tr></table></figure>
-<p><code>Automated Certificate Management</code>を有効にする。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto:enable -a pplog</span><br><span class="line">Enabling Automatic Certificate Management... done</span><br></pre></td></tr></table></figure>
-<p>すぐに確認すると、<code>In Progress</code>になっている。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto -a pplog</span><br><span class="line">=== Automatic Certificate Management is enabled on pplog</span><br><span class="line"></span><br><span class="line">Domain         Status</span><br><span class="line">─────────────  ───────────</span><br><span class="line">www.pplog.net  In Progress</span><br><span class="line">pplog.net      In Progress</span><br></pre></td></tr></table></figure>
-<p>しばらくすると、<code>OK</code>になる。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">heroku certs:auto -a pplog</span><br><span class="line">=== Automatic Certificate Management is enabled on pplog</span><br><span class="line"></span><br><span class="line">Certificate details:</span><br><span class="line">Common Name(s): pplog.net</span><br><span class="line">                www.pplog.net</span><br><span class="line">Expires At:     2018-01-30 04:51 UTC</span><br><span class="line">Issuer:         /C=US/O=Let&apos;s Encrypt/CN=Let&apos;s Encrypt Authority X3</span><br><span class="line">Starts At:      2017-11-01 04:51 UTC</span><br><span class="line">Subject:        /CN=pplog.net</span><br><span class="line">SSL certificate is verified by a root authority.</span><br><span class="line"></span><br><span class="line">Domain         Status</span><br><span class="line">─────────────  ──────</span><br><span class="line">www.pplog.net  OK</span><br><span class="line">pplog.net      OK</span><br></pre></td></tr></table></figure>
-<p>証明書の<code>Type</code>が<code>ACM</code>になっていれば完了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">heroku certs -a pplog</span><br><span class="line">Name                Common Name(s)            Expires               Trusted  Type</span><br><span class="line">──────────────────  ────────────────────────  ────────────────────  ───────  ────</span><br><span class="line">camarasaurus-91097  pplog.net, www.pplog.net  2018-01-30 04:51 UTC  True     ACM</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/249/" data-id="cjg4mfn58000f8l2z5l0lxpnu" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjj06id7g000hoi2ounbuvya2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -802,6 +779,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/324/">Selenium::DriverのChrome のオプションの渡し方が変わってた</a>
+          </li>
+        
+          <li>
             <a href="/posts/287/">Railsのcookies serializerの設定変更時には heroku の preboot の設定を確認しておくこと</a>
           </li>
         
@@ -815,10 +796,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/270/">uGUIについて学ぶ</a>
-          </li>
-        
-          <li>
-            <a href="/posts/268/">Unityで「もぐらたたきゲーム」を作ってみる1</a>
           </li>
         
       </ul>

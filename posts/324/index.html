@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hexo の archives の表示順序を変える | 雑なアウトプット</title>
+  <title>Selenium::DriverのChrome のオプションの渡し方が変わってた | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
-<meta name="keywords" content="hexo">
+  <meta name="description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo の archives の表示順序を変える">
-<meta property="og:url" content="https://ppworks.github.io/posts/253/index.html">
+<meta property="og:title" content="Selenium::DriverのChrome のオプションの渡し方が変わってた">
+<meta property="og:url" content="https://ppworks.github.io/posts/324/index.html">
 <meta property="og:site_name" content="雑なアウトプット">
-<meta property="og:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
+<meta property="og:description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-29T16:14:09.177Z">
+<meta property="og:updated_time" content="2018-06-29T16:14:09.181Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo の archives の表示順序を変える">
-<meta name="twitter:description" content="hexo-generator-indexにはあるorder_byオプションがhexo-generator-archiveには、なかったので足した。  Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive  1234567   var config =">
+<meta name="twitter:title" content="Selenium::DriverのChrome のオプションの渡し方が変わってた">
+<meta name="twitter:description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
   
     <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
   
@@ -100,10 +99,10 @@ ga('send', 'pageview');
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-253.html" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-324.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/posts/253/" class="article-date">
-  <time datetime="2017-11-09T02:52:38.000Z" itemprop="datePublished">2017-11-09 02:52:38</time>
+    <a href="/posts/324/" class="article-date">
+  <time datetime="2018-06-29T16:13:18.000Z" itemprop="datePublished">2018-06-29 16:13:18</time>
 </a>
 
   </div>
@@ -115,7 +114,7 @@ ga('send', 'pageview');
         
 
   <h1 itemprop="name">
-    <a class="article-title" href="/posts/253/">Hexo の archives の表示順序を変える</a>
+    <a class="article-title" href="/posts/324/">Selenium::DriverのChrome のオプションの渡し方が変わってた</a>
   </h1>
 
 
@@ -123,42 +122,24 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><a href="https://github.com/hexojs/hexo-generator-index" target="_blank" rel="noopener">hexo-generator-index</a>にはある<code>order_by</code>オプションが<a href="https://github.com/hexojs/hexo-generator-archive" target="_blank" rel="noopener">hexo-generator-archive</a>には、なかったので足した。</p>
-<blockquote>
-<p><a href="https://github.com/hexojs/hexo-generator-archive/pull/9" target="_blank" rel="noopener">Enable archives to sort by custom order by ppworks · Pull Request #9 · hexojs/hexo-generator-archive</a></p>
-</blockquote>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">   var config = this.config;</span><br><span class="line">   var archiveDir = config.archive_dir;</span><br><span class="line">   var paginationDir = config.pagination_dir || 'page';</span><br><span class="line"><span class="deletion">-  var allPosts = locals.posts.sort('-date');</span></span><br><span class="line"><span class="addition">+  var allPosts = locals.posts.sort(config.archive_generator.order_by || '-date');</span></span><br><span class="line">   var perPage = config.archive_generator.per_page;</span><br><span class="line">   var result = [];</span><br></pre></td></tr></table></figure>
-<p><a href="https://github.com/hexojs/hexo-generator-archive/releases/tag/0.1.5" target="_blank" rel="noopener"><strong>0.1.5</strong></a>以降を使うと<code>order_by</code>オプションが使えるようになるので、<a href="https://github.com/ppworks/ppworks.github.io/commit/d1dcdbd708e327953acda9c1a474b37e5ef78d6a" target="_blank" rel="noopener">こんな感じで</a><code>_config.yml</code>に<code>order_by</code>を追加する。</p>
-<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/_config.yml b/_config.yml</span><br><span class="line">index 9c306f1..232f072 100644</span><br><span class="line"><span class="comment">--- a/_config.yml</span></span><br><span class="line"><span class="comment">+++ b/_config.yml</span></span><br><span class="line">@@ -53,6 +53,9 @@ index_generator:</span><br><span class="line">   per_page: 10</span><br><span class="line">   order_by: -number</span><br><span class="line"></span><br><span class="line"><span class="addition">+archive_generator:</span></span><br><span class="line"><span class="addition">+  order_by: -number</span></span><br><span class="line"><span class="addition">+</span></span><br><span class="line"> # Category &amp; Tag</span><br><span class="line"> default_category: uncategorized</span><br><span class="line"> category_map:</span><br></pre></td></tr></table></figure>
-<p>このhexoはesaと連携しているので、<code>index</code>と同じように<code>number</code>の降順にした。</p>
+        <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjj06id7q000moi2o6g7f43mx" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj06id8d0011oi2oythjt187" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/posts/251/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Dockerでrails s
-        
-      </div>
-    </a>
   
-  
-    <a href="/posts/262/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/279/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">esaのslideをembedする</div>
+      <div class="article-nav-title">今までのリモートワークで起きた問題を整理してみる</div>
     </a>
   
 </nav>
