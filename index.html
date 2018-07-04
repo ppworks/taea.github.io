@@ -100,7 +100,7 @@ ga('send', 'pageview');
     <article id="post-324.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/324/" class="article-date">
-  <time datetime="2018-06-29T16:13:18.000Z" itemprop="datePublished">2018-06-29 16:13:18</time>
+  <time datetime="2018-07-04T11:39:19.000Z" itemprop="datePublished">2018-07-04 11:39:19</time>
 </a>
 
   </div>
@@ -120,12 +120,13 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
+        <p><a href="https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0" target="_blank" rel="noopener">https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0</a></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj06id8d0011oi2oythjt187" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj71xcm10011ph30ov0psb66" class="article-share-link">Share</a>
       
       
     </footer>
@@ -170,7 +171,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjj06id8b000zoi2oegluqa0s" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjj71xcly000zph307slylf3e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -238,7 +239,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjj06id88000xoi2osowiq66g" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjj71xclu000xph30cm4sq2as" class="article-share-link">Share</a>
       
       
     </footer>
@@ -316,7 +317,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjj06id84000voi2ojy72hdkr" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjj71xclq000vph30vo1pytl7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -388,7 +389,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjj06id82000toi2o0gip0lj8" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjj71xclk000tph30glgdzcx3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -539,7 +540,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjj06id7z000qoi2oyy190htr" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjj71xclg000qph30pr2iuhjg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -584,7 +585,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjj06id7w000ooi2of74tfp16" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjj71xclb000oph30s6oh3y51" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/esa/">esa</a></li></ul>
@@ -632,7 +633,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjj06id7q000moi2o6g7f43mx" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjj71xcl8000mph304mnxoau2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
@@ -704,7 +705,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjj06id7n000koi2o6b0u3909" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjj71xcl5000kph30qlytk5dk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -751,7 +752,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjj06id7g000hoi2ounbuvya2" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/250/" data-id="cjj71xcl1000hph308ixq1rqo" class="article-share-link">Share</a>
       
       
     </footer>

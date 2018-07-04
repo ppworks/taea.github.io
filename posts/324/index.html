@@ -5,17 +5,17 @@
   
   <title>Selenium::DriverのChrome のオプションの渡し方が変わってた | 雑なアウトプット</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
+  <meta name="description" content="https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0 12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Selenium::DriverのChrome のオプションの渡し方が変わってた">
 <meta property="og:url" content="https://ppworks.github.io/posts/324/index.html">
 <meta property="og:site_name" content="雑なアウトプット">
-<meta property="og:description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
+<meta property="og:description" content="https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0 12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-29T16:14:09.181Z">
+<meta property="og:updated_time" content="2018-07-04T11:40:25.903Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Selenium::DriverのChrome のオプションの渡し方が変わってた">
-<meta name="twitter:description" content="12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100644--- a/spec/rails_helper.rb+++ b/spec/rails_helper.rb@@ -29,13 +29,13 @@ RSpec.">
+<meta name="twitter:description" content="https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0 12345678910111213141516171819202122diff --git a/spec/rails_helper.rb b/spec/rails_helper.rbindex 890a93ba..3cde2021 100">
   
     <link rel="alternate" href="/atom.xml" title="雑なアウトプット" type="application/atom+xml">
   
@@ -102,7 +102,7 @@ ga('send', 'pageview');
         <section id="main"><article id="post-324.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/324/" class="article-date">
-  <time datetime="2018-06-29T16:13:18.000Z" itemprop="datePublished">2018-06-29 16:13:18</time>
+  <time datetime="2018-07-04T11:39:19.000Z" itemprop="datePublished">2018-07-04 11:39:19</time>
 </a>
 
   </div>
@@ -122,12 +122,13 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
+        <p><a href="https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0" target="_blank" rel="noopener">https://github.com/SeleniumHQ/selenium/compare/selenium-3.12.0...selenium-3.13.0</a></p>
+<figure class="highlight diff"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">diff --git a/spec/rails_helper.rb b/spec/rails_helper.rb</span><br><span class="line">index 890a93ba..3cde2021 100644</span><br><span class="line"><span class="comment">--- a/spec/rails_helper.rb</span></span><br><span class="line"><span class="comment">+++ b/spec/rails_helper.rb</span></span><br><span class="line">@@ -29,13 +29,13 @@ RSpec.configure do |config|</span><br><span class="line">   Capybara.configure do |config|</span><br><span class="line">     config.server = :puma</span><br><span class="line">   end</span><br><span class="line"><span class="addition">+</span></span><br><span class="line">   Capybara.register_driver :headless_chrome do |app|</span><br><span class="line">     Capybara::Selenium::Driver.new(app,</span><br><span class="line">       browser: :chrome,</span><br><span class="line"><span class="deletion">-      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(</span></span><br><span class="line"><span class="deletion">-        chrome_options: &#123;</span></span><br><span class="line"><span class="deletion">-          args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292),</span></span><br><span class="line"><span class="deletion">-        &#125;,</span></span><br><span class="line"><span class="addition">+      desired_capabilities: Selenium::WebDriver::Remote::Capabilities.chrome(),</span></span><br><span class="line"><span class="addition">+      options: Selenium::WebDriver::Chrome::Options.new(</span></span><br><span class="line"><span class="addition">+        args: %w(--headless --disable-gpu window-size=1680,1050 --lang=ja-JP --proxy-server=127.0.0.1:9292)</span></span><br><span class="line">       )</span><br><span class="line">     )</span><br><span class="line">   end</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj06id8d0011oi2oythjt187" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjj71xcm10011ph30ov0psb66" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,9 +138,9 @@ ga('send', 'pageview');
 <nav id="article-nav">
   
   
-    <a href="/posts/279/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/posts/270/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">今までのリモートワークで起きた問題を整理してみる</div>
+      <div class="article-nav-title">uGUIについて学ぶ</div>
     </a>
   
 </nav>
