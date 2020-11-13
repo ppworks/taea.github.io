@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head><meta name="generator" content="Hexo 3.8.0">
+<head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
   <title>雑なアウトプット</title>
@@ -97,6 +97,51 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-515.html" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/posts/515/" class="article-date">
+  <time datetime="2020-11-13T07:32:12.000Z" itemprop="datePublished">2020-11-13 07:32:12</time>
+</a>
+
+  </div>
+  <div class="article-inner">
+    
+
+    
+      <header class="article-header">
+        
+
+  <h1 itemprop="name">
+    <a class="article-title" href="/posts/515/">Facebookの動画のミュートを解除する</a>
+  </h1>
+
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Facebookの動画のミュートを一斉解除するブックマークレット。</p>
+<p><a href="https://jsfiddle.net/tve1m93L/" target="_blank" rel="noopener">https://jsfiddle.net/tve1m93L/</a></p>
+<h3 id="ブラウザへの設定例"><a href="#ブラウザへの設定例" class="headerlink" title="ブラウザへの設定例"></a>ブラウザへの設定例</h3><ul>
+<li>Chrome: リンクをブックマークバーへドラッグ・アンド・ドロップ</li>
+<li>Firefox: リンクでコンテキストメニューを表示し、「このリンクをブックマーク」を選択</li>
+</ul>
+<h3 id="やってること"><a href="#やってること" class="headerlink" title="やってること"></a>やってること</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'li [role="article"]'</span>).forEach(</span><br><span class="line">  <span class="function"><span class="keyword">function</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a.querySelector(<span class="string">'video'</span>) &amp;&amp; !a.getAttribute(<span class="string">'data-off-mute'</span>))&#123;</span><br><span class="line">      a.setAttribute(<span class="string">'data-off-mute'</span>, <span class="string">'1'</span>);</span><br><span class="line">      <span class="keyword">var</span> volume = a.querySelector(<span class="string">'[aria-label="音量"]'</span>);</span><br><span class="line">      <span class="keyword">var</span> volumeslider = a.querySelector(<span class="string">'[aria-label="音量を変更"]'</span>);</span><br><span class="line">      a.querySelectorAll(<span class="string">'[aria-label$="再生"]'</span>).forEach(</span><br><span class="line">        <span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</span><br><span class="line">          b.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (volumeslider.querySelector(<span class="string">'[style="height: 0%;"]'</span>)) &#123; volume.click() &#125; </span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://ppworks.github.io/posts/515/" data-id="ckhgtrfxl0014dspvmtjlhh7o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-463.html" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/posts/463/" class="article-date">
@@ -131,7 +176,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/463/" data-id="cjv622x3500136eqw7a3x90ui" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/463/" data-id="ckhgtrfxj0013dspvv0wcqc2y" class="article-share-link">Share</a>
       
       
     </footer>
@@ -171,7 +216,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/324/" data-id="cjv622x3100116eqw2gmihzdr" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/324/" data-id="ckhgtrfxh0011dspvkrd1meaz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -216,7 +261,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/287/" data-id="cjv622x2y000z6eqwxl7k1f17" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/287/" data-id="ckhgtrfxg000zdspv15v9tv9v" class="article-share-link">Share</a>
       
       
     </footer>
@@ -284,7 +329,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/279/" data-id="cjv622x2u000x6eqw6snkl0og" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/279/" data-id="ckhgtrfxe000xdspvrkf861fs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -362,7 +407,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/272/" data-id="cjv622x2o000v6eqw59oo73ui" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/272/" data-id="ckhgtrfxa000vdspvyzo603al" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -434,7 +479,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/270/" data-id="cjv622x2k000t6eqwh4hgk5ph" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/270/" data-id="ckhgtrfx7000tdspvssm95odh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -585,7 +630,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/268/" data-id="cjv622x2e000q6eqwt0p0qnj6" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/268/" data-id="ckhgtrfx3000qdspvexteosjx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/unity/">unity</a></li></ul>
@@ -630,7 +675,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/262/" data-id="cjv622x29000o6eqwkwv9982t" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/262/" data-id="ckhgtrfx2000odspv62e9nt6w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/esa/">esa</a></li></ul>
@@ -678,81 +723,11 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/253/" data-id="cjv622x24000m6eqw6cdz26lt" class="article-share-link">Share</a>
+      <a data-url="https://ppworks.github.io/posts/253/" data-id="ckhgtrfwz000mdspvb8hzmrs9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-251.html" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/posts/251/" class="article-date">
-  <time datetime="2017-11-03T09:10:37.000Z" itemprop="datePublished">2017-11-03 09:10:37</time>
-</a>
-
-  </div>
-  <div class="article-inner">
-    
-
-    
-      <header class="article-header">
-        
-
-  <h1 itemprop="name">
-    <a class="article-title" href="/posts/251/">Dockerでrails s</a>
-  </h1>
-
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="/posts/250">#250:  blog/Dockerでrails new</a> 出来たので今回は、<code>rails s</code>したくていろいろ調べながら、最低限の<code>Dockerfile</code>と<code>docker-comose.yml</code>が出来上がったのでメモ。</p>
-<h2 id="Dockerfile-dev"><a href="#Dockerfile-dev" class="headerlink" title="Dockerfile-dev"></a>Dockerfile-dev</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">FROM ruby:2.4.2-slim</span><br><span class="line">MAINTAINER Naoto Koshikawa &lt;koshikawa@ppworks.jp&gt;</span><br><span class="line"></span><br><span class="line">ENV DEBIAN_FRONTEND noninteractive</span><br><span class="line"></span><br><span class="line"># set locale and timezone</span><br><span class="line">RUN apt-get update -qq &amp;&amp; \</span><br><span class="line">  apt-get -y upgrade &amp;&amp; \</span><br><span class="line">  apt-get -y install locales &amp;&amp; \</span><br><span class="line">  apt-get clean &amp;&amp; \</span><br><span class="line">  apt-get autoclean &amp;&amp; \</span><br><span class="line">  apt-get autoremove &amp;&amp; \</span><br><span class="line">  echo en_US.UTF-8 UTF-8 &gt; /etc/locale.gen &amp;&amp; locale-gen &amp;&amp; dpkg-reconfigure locales &amp;&amp; \</span><br><span class="line">  echo &quot;Asia/Tokyo&quot; &gt; /etc/timezone &amp;&amp; dpkg-reconfigure -f noninteractive tzdata</span><br><span class="line"></span><br><span class="line">ENV TZ Asia/Tokyo</span><br><span class="line"></span><br><span class="line">RUN apt-get -y --no-install-recommends install \</span><br><span class="line">  build-essential \</span><br><span class="line">  libpq-dev \</span><br><span class="line">  nodejs \</span><br><span class="line">  wget</span><br><span class="line"></span><br><span class="line">ENV ENTRYKIT_VERSION 0.4.0</span><br><span class="line">RUN wget https://github.com/progrium/entrykit/releases/download/v$&#123;ENTRYKIT_VERSION&#125;/entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</span><br><span class="line">  &amp;&amp; tar -xvzf entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</span><br><span class="line">  &amp;&amp; rm entrykit_$&#123;ENTRYKIT_VERSION&#125;_Linux_x86_64.tgz \</span><br><span class="line">  &amp;&amp; mv entrykit /bin/entrykit \</span><br><span class="line">  &amp;&amp; chmod +x /bin/entrykit \</span><br><span class="line">  &amp;&amp; entrykit --symlink</span><br><span class="line"></span><br><span class="line">RUN mkdir /app</span><br><span class="line">WORKDIR /app</span><br><span class="line"></span><br><span class="line">ENTRYPOINT [ \</span><br><span class="line">  &quot;prehook&quot;, &quot;bundle install -j4 --quiet&quot;, &quot;--&quot;]</span><br></pre></td></tr></table></figure>
-<h2 id="docker-compose-yml"><a href="#docker-compose-yml" class="headerlink" title="docker-compose.yml"></a>docker-compose.yml</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">version: &apos;3&apos;</span><br><span class="line">services:</span><br><span class="line">  rails: &amp;app_base</span><br><span class="line">    build:</span><br><span class="line">      context: .</span><br><span class="line">      dockerfile: Dockerfile-dev</span><br><span class="line">    environment:</span><br><span class="line">      DATABASE_URL: &quot;postgres://postgres:@db:5432/your_app_development&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - &quot;.:/app&quot;</span><br><span class="line">    ports:</span><br><span class="line">      - &quot;3000:3000&quot;</span><br><span class="line">    depends_on:</span><br><span class="line">      - db</span><br><span class="line">    command: [&quot;bundle&quot;, &quot;exec&quot;, &quot;rails&quot;, &quot;s&quot;, &quot;-b&quot;, &quot;0.0.0.0&quot;]</span><br><span class="line">  db:</span><br><span class="line">    image: &quot;postgres:10.0&quot;</span><br><span class="line">    volumes:</span><br><span class="line">      - pg-data:/var/lib/postgresql/data</span><br><span class="line">volumes:</span><br><span class="line">  pg-data:</span><br><span class="line">    driver: local</span><br></pre></td></tr></table></figure>
-<h2 id="dockerignore"><a href="#dockerignore" class="headerlink" title=".dockerignore"></a>.dockerignore</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.git</span><br><span class="line">doc</span><br><span class="line">docker-compose.yml</span><br><span class="line">log</span><br><span class="line">tmp</span><br><span class="line">Dockerfile</span><br><span class="line">Dockerfile-dev</span><br></pre></td></tr></table></figure>
-<h2 id="config-database-yml"><a href="#config-database-yml" class="headerlink" title="config/database.yml"></a>config/database.yml</h2><p>雑に環境変数<code>DATABASE_URL</code>で繋ぐようにしてみた。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">default: &amp;default</span><br><span class="line">  adapter: postgresql</span><br><span class="line">  encoding: unicode</span><br><span class="line">  pool: &lt;%= ENV.fetch(&quot;RAILS_MAX_THREADS&quot;) &#123; 5 &#125; %&gt;</span><br><span class="line">  url: &lt;%= ENV[&apos;DATABASE_URL&apos;] %&gt;</span><br><span class="line">development:</span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">test:</span><br><span class="line">  &lt;&lt;: *default</span><br><span class="line">production:</span><br><span class="line">  &lt;&lt;: *default</span><br></pre></td></tr></table></figure>
-<h2 id="使い方"><a href="#使い方" class="headerlink" title="使い方"></a>使い方</h2><p><code>Dockerfile</code>を更新した場合は</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker-compose build</span><br><span class="line">docker image prune # 必要に応じて</span><br></pre></td></tr></table></figure>
-<p>普段の開発は</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose up -d</span><br></pre></td></tr></table></figure>
-<p>migrationなどの実行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose exec rails db:migate</span><br></pre></td></tr></table></figure>
-<p>DBに入る</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker-compose db psql -u postgres</span><br></pre></td></tr></table></figure>
-<p>みたいな感じ。</p>
-<h2 id="参考にした"><a href="#参考にした" class="headerlink" title="参考にした"></a>参考にした</h2><ul>
-<li><a href="https://qiita.com/kawasin73/items/2253523be18e5afd994f" target="_blank" rel="noopener">高速に開発できる Docker + Rails開発環境のテンプレートを作った - Qiita</a></li>
-<li><a href="https://qiita.com/joker1007/items/9f54e763ae640f757cfb" target="_blank" rel="noopener">開発しやすいRails on Docker環境の作り方 - Qiita</a></li>
-</ul>
-<p>この辺のQiita記事を参考にしつつも、そもそも<code>Dockerfile</code>の記述方法もよくわからないし、<code>docker-compose.yml</code>の記述方法もよくわからなかったので、公式ドキュメントを読みまくった。</p>
-<ul>
-<li><a href="https://docs.docker.com/engine/reference/builder/" target="_blank" rel="noopener">Dockerfile reference | Docker Documentation</a></li>
-<li><a href="https://docs.docker.com/compose/compose-file/" target="_blank" rel="noopener">Compose file version 3 reference | Docker Documentation</a></li>
-</ul>
-<p>buildしまくっていると、imageの差分が出来まくるので、不要なものを消したいと思って色々調べた結果</p>
-<blockquote>
-<p><a href="https://suin.io/537" target="_blank" rel="noopener">Dockerの不要なコンテナ・イメージを一括削除する方法</a></p>
-</blockquote>
-<p>がとても参考になった。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker image prune</span><br></pre></td></tr></table></figure>
-<p>をよく使う。</p>
-<p>次はいまConoHa VPSで雑に動かしているアプリをDocker化してみようと思う。<br>本番も、<code>docker-compose</code>使うことになるのかな。だとしたら、今回作った開発用のものは<code>docker-compose-dev.yml</code>みたいな感じになるだろうか。試行錯誤してみよ。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://ppworks.github.io/posts/251/" data-id="cjv622x20000k6eqwj6j03bb8" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -778,6 +753,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/posts/515/">Facebookの動画のミュートを解除する</a>
+          </li>
+        
+          <li>
             <a href="/posts/463/">雑にgoする</a>
           </li>
         
@@ -791,10 +770,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/posts/279/">今までのリモートワークで起きた問題を整理してみる</a>
-          </li>
-        
-          <li>
-            <a href="/posts/272/">Unityで「もぐらたたきゲーム」を作ってみる2</a>
           </li>
         
       </ul>
@@ -815,7 +790,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
   <h3 class="widget-title">Builds</h3>
   <div class="widget">
-    <a href="https://travis-ci.org/ppworks/ppworks.github.io/builds"><img class="travis-badge" src="https://travis-ci.org/ppworks/ppworks.github.io.svg?branch=esa"></a>
+    <a href="https://travis-ci.org/ppworks/ppworks.github.io/builds"><img class="travis-badge" src="https://travis-ci.org/ppworks/ppworks.github.io.svg?branch=esa" /></a>
     <ul id="js-travis-ci-builds" class="travis-list">
     </ul>
   </div>
@@ -840,7 +815,7 @@ ga('send', 'pageview');
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 ppworks<br>
+      &copy; 2020 ppworks<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
